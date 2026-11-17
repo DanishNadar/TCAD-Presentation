@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Measured T-CAD experiment results",
+  "type": "object",
+  "required": ["schemaVersion", "status", "experiments"],
+  "properties": {
+    "schemaVersion": { "const": "1.0" },
+    "status": { "enum": ["awaiting_measurements", "measured"] },
+    "provenance": { "type": "string" },
+    "experiments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["configuration", "condition", "dataset", "runId", "sourceFile", "hardware", "nScenarios", "metrics"],
+        "properties": {
+          "configuration": { "enum": ["ND", "A0", "A1", "A2", "A3", "A4", "A5"] },
+          "condition": { "type": "string" },
+          "dataset": { "type": "string" },
+          "runId": { "type": "string" },
+          "sourceFile": { "type": "string" },
+          "hardware": { "type": "string" },
+          "nScenarios": { "type": "integer", "minimum": 1 },
+          "metrics": {
+            "type": "object",
+            "properties": {
+              "regionTpr": { "type": "number", "minimum": 0, "maximum": 1 },
+              "frameTpr": { "type": "number", "minimum": 0, "maximum": 1 },
+              "frameFpr": { "type": "number", "minimum": 0, "maximum": 1 },
+              "precision": { "type": "number", "minimum": 0, "maximum": 1 },
+              "f1": { "type": "number", "minimum": 0, "maximum": 1 },
+              "prAuc": { "type": "number", "minimum": 0, "maximum": 1 },
+              "detectionDelayFramesMedian": { "type": "number", "minimum": 0 },
+              "ece": { "type": "number", "minimum": 0, "maximum": 1 },
+              "occupancyIou": { "type": "number", "minimum": 0, "maximum": 1 },
+              "runtimeMsPerFrame": { "type": "number", "minimum": 0 }
+            },
+            "minProperties": 1,
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,63 @@
+{
+  "run_id": "demo_C_contradictory",
+  "scenario": "contradictory-s42",
+  "description": "Contradictory observation: one CAV's report contains a bounded synthetic phantom object.",
+  "seed": 42,
+  "config_id": "fbe82220fc",
+  "n_frames": 150,
+  "agents": [
+    "cav_00",
+    "cav_01",
+    "cav_02",
+    "cav_03"
+  ],
+  "n_report_rows": 1788,
+  "n_positive_rows": 90,
+  "observation_model": "calibrated",
+  "decision_thresholds": "validation",
+  "snapshots": 5,
+  "per_config": {
+    "A0": {
+      "tpr": 1.0,
+      "fpr": 0.06949352179034157,
+      "auroc": 0.991643763905248,
+      "n_alerts": 208
+    },
+    "A1": {
+      "tpr": 0.9333333333333333,
+      "fpr": 0.05594817432273263,
+      "auroc": 0.9871417353749509,
+      "n_alerts": 179
+    },
+    "A2": {
+      "tpr": 0.9888888888888889,
+      "fpr": 0.021790341578327443,
+      "auroc": 0.9972909305064782,
+      "n_alerts": 126
+    },
+    "A3": {
+      "tpr": 0.9666666666666667,
+      "fpr": 0.0624263839811543,
+      "auroc": 0.9795511058761942,
+      "n_alerts": 193
+    },
+    "A4": {
+      "tpr": 0.9666666666666667,
+      "fpr": 0.02591283863368669,
+      "auroc": 0.9938162544169611,
+      "n_alerts": 131
+    },
+    "A5": {
+      "tpr": 0.9666666666666667,
+      "fpr": 0.03769140164899882,
+      "auroc": 0.9974676089517079,
+      "n_alerts": 151
+    },
+    "A5-LR": {
+      "tpr": 1.0,
+      "fpr": 0.04534746760895171,
+      "auroc": 0.9974545216594687,
+      "n_alerts": 167
+    }
+  }
+}

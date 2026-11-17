@@ -1,0 +1,48 @@
+{
+  "snapshots": [
+    {
+      "name": "t006p8s_cav_01_to_cav_00",
+      "time": 6.8,
+      "ego": "cav_01",
+      "reporter": "cav_00",
+      "label": 1,
+      "summary": "At t = 6.8 s (frame 68), cav_01 evaluated the report of cav_00 (message age 100 ms). CAD (A0): inconsistent area 16.50 m^2 = occupancy conflict 11.25 + spoof 3.25 + remove 2.00 (alert threshold 10.00; strong-CAD 13.75). Conflicting sources: cav_01+cav_02+cav_03. Calibrated / Bayesian evidence: A1 = 10.43, A2 = 9.14 m^2; leave-one-out corroboration fraction 0.99 from on average 1.81 independent observers per claimed cell. CAD-HMM: A3 = 21.03, A4 = 19.16 m^2 (rule threshold 12.59); temporal excess surprise 35.3 nats*m^2; mean posterior entropy 0.016 bit. T-CAD decision: alert (A5 score 1.52; A5-LR p = 0.99). An alert indicates an inconsistency with independent evidence, not proof of malicious intent."
+    },
+    {
+      "name": "t006p8s_cav_02_to_cav_00",
+      "time": 6.8,
+      "ego": "cav_02",
+      "reporter": "cav_00",
+      "label": 1,
+      "summary": "At t = 6.8 s (frame 68), cav_02 evaluated the report of cav_00 (message age 100 ms). CAD (A0): inconsistent area 14.00 m^2 = occupancy conflict 8.75 + spoof 3.25 + remove 2.00 (alert threshold 10.00; strong-CAD 13.75). Conflicting sources: cav_02+cav_01+cav_03. Calibrated / Bayesian evidence: A1 = 10.60, A2 = 10.42 m^2; leave-one-out corroboration fraction 0.99 from on average 1.84 independent observers per claimed cell. CAD-HMM: A3 = 19.73, A4 = 19.76 m^2 (rule threshold 12.59); temporal excess surprise 26.1 nats*m^2; mean posterior entropy 0.013 bit. T-CAD decision: alert (A5 score 1.57; A5-LR p = 0.99). An alert indicates an inconsistency with independent evidence, not proof of malicious intent."
+    },
+    {
+      "name": "t006p8s_cav_03_to_cav_00",
+      "time": 6.8,
+      "ego": "cav_03",
+      "reporter": "cav_00",
+      "label": 1,
+      "summary": "At t = 6.8 s (frame 68), cav_03 evaluated the report of cav_00 (message age 100 ms). CAD (A0): inconsistent area 16.75 m^2 = occupancy conflict 11.25 + spoof 3.25 + remove 2.25 (alert threshold 10.00; strong-CAD 13.75). Conflicting sources: cav_03+cav_01+cav_02. Calibrated / Bayesian evidence: A1 = 11.43, A2 = 9.83 m^2; leave-one-out corroboration fraction 0.99 from on average 1.82 independent observers per claimed cell. CAD-HMM: A3 = 22.49, A4 = 19.90 m^2 (rule threshold 12.59); temporal excess surprise 31.8 nats*m^2; mean posterior entropy 0.014 bit. T-CAD decision: alert (A5 score 1.58; A5-LR p = 0.99). An alert indicates an inconsistency with independent evidence, not proof of malicious intent."
+    },
+    {
+      "name": "t007p3s_cav_01_to_cav_02",
+      "time": 7.3,
+      "ego": "cav_01",
+      "reporter": "cav_02",
+      "label": 0,
+      "summary": "At t = 7.3 s (frame 73), cav_01 evaluated the report of cav_02 (message age 100 ms). CAD (A0): inconsistent area 14.25 m^2 = occupancy conflict 9.75 + spoof 1.50 + remove 3.00 (alert threshold 10.00; strong-CAD 13.75). Conflicting sources: cav_01+cav_00+cav_03. Calibrated / Bayesian evidence: A1 = 9.85, A2 = 4.35 m^2; leave-one-out corroboration fraction 1.00 from on average 1.99 independent observers per claimed cell. CAD-HMM: A3 = 17.73, A4 = 10.49 m^2 (rule threshold 12.59); temporal excess surprise 24.1 nats*m^2; mean posterior entropy 0.018 bit. T-CAD decision: alert (A5 score 1.04; A5-LR p = 0.15). An alert indicates an inconsistency with independent evidence, not proof of malicious intent."
+    },
+    {
+      "name": "t007p3s_cav_03_to_cav_02",
+      "time": 7.3,
+      "ego": "cav_03",
+      "reporter": "cav_02",
+      "label": 0,
+      "summary": "At t = 7.3 s (frame 73), cav_03 evaluated the report of cav_02 (message age 100 ms). CAD (A0): inconsistent area 14.75 m^2 = occupancy conflict 9.75 + spoof 2.50 + remove 2.50 (alert threshold 10.00; strong-CAD 13.75). Conflicting sources: cav_03+cav_00+cav_01. Calibrated / Bayesian evidence: A1 = 10.84, A2 = 5.13 m^2; leave-one-out corroboration fraction 1.00 from on average 2.01 independent observers per claimed cell. CAD-HMM: A3 = 18.95, A4 = 9.43 m^2 (rule threshold 12.59); temporal excess surprise 14.7 nats*m^2; mean posterior entropy 0.017 bit. T-CAD decision: alert (A5 score 1.07; A5-LR p = 0.07). An alert indicates an inconsistency with independent evidence, not proof of malicious intent."
+    }
+  ],
+  "n_rows": 1788,
+  "config_id": "fbe82220fc",
+  "decision_source": "validation",
+  "observation_model": "calibrated"
+}

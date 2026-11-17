@@ -1,0 +1,442 @@
+{
+ "schemaVersion": "1.0",
+ "status": "measured",
+ "provenance": "Measured on the T-CAD synthetic simulator (not Adv-OPV2V). Converted by scripts/import_research_data.py from research-data/measured/. Not comparable to Zhang et al. (2024).",
+ "generatedFrom": "research-data/measured/confidence_intervals.csv, events_summary.csv, latency_metrics.csv",
+ "experiments": [
+  {
+   "configuration": "A0",
+   "condition": "nominal test split (9 scenario families)",
+   "dataset": "T-CAD synthetic simulator, held-out test split",
+   "runId": "ablation-test (45 scenarios, seeds 4000-4004)",
+   "sourceFile": "research-data/measured/confidence_intervals.csv",
+   "hardware": "Windows-11-10.0.26200-SP0 \u00b7 ARM64 \u00b7 ARMv8 (64-bit) Family 8 Model 1 Revision 201 \u00b7 12 cores \u00b7 31.6 GB \u00b7 Python 3.12.10",
+   "nScenarios": 45,
+   "level": "report",
+   "denominator": {
+    "rows": 77968,
+    "positives": 3560,
+    "negatives": 74408
+   },
+   "metrics": {
+    "reportTpr": 0.5213,
+    "reportFpr": 0.0479,
+    "precision": 0.3424,
+    "f1": 0.4133,
+    "prAuc": 0.306,
+    "rocAuc": 0.9107,
+    "frameTpr": 0.6624,
+    "frameFpr": 0.0656,
+    "eventDetectionRate": 0.9833,
+    "meanDetectionDelayS": 0.3339,
+    "latencyP95Ms": 28.283
+   },
+   "ci95": {
+    "reportTpr": [
+     0.4187,
+     0.6103
+    ],
+    "reportFpr": [
+     0.0358,
+     0.0623
+    ],
+    "precision": [
+     0.2497,
+     0.4105
+    ],
+    "f1": [
+     0.3223,
+     0.4744
+    ],
+    "prAuc": [
+     0.213,
+     0.3834
+    ],
+    "rocAuc": [
+     0.8843,
+     0.9331
+    ],
+    "frameTpr": [
+     0.5669,
+     0.7409
+    ],
+    "frameFpr": [
+     0.0464,
+     0.0896
+    ]
+   }
+  },
+  {
+   "configuration": "A1",
+   "condition": "nominal test split (9 scenario families)",
+   "dataset": "T-CAD synthetic simulator, held-out test split",
+   "runId": "ablation-test (45 scenarios, seeds 4000-4004)",
+   "sourceFile": "research-data/measured/confidence_intervals.csv",
+   "hardware": "Windows-11-10.0.26200-SP0 \u00b7 ARM64 \u00b7 ARMv8 (64-bit) Family 8 Model 1 Revision 201 \u00b7 12 cores \u00b7 31.6 GB \u00b7 Python 3.12.10",
+   "nScenarios": 45,
+   "level": "report",
+   "denominator": {
+    "rows": 77968,
+    "positives": 3560,
+    "negatives": 74408
+   },
+   "metrics": {
+    "reportTpr": 0.273,
+    "reportFpr": 0.0498,
+    "precision": 0.2078,
+    "f1": 0.236,
+    "prAuc": 0.1688,
+    "rocAuc": 0.8316,
+    "frameTpr": 0.4042,
+    "frameFpr": 0.0976,
+    "eventDetectionRate": 0.8833,
+    "meanDetectionDelayS": 0.4283,
+    "latencyP95Ms": 38.735
+   },
+   "ci95": {
+    "reportTpr": [
+     0.1909,
+     0.351
+    ],
+    "reportFpr": [
+     0.0408,
+     0.0598
+    ],
+    "precision": [
+     0.1212,
+     0.2883
+    ],
+    "f1": [
+     0.1512,
+     0.2986
+    ],
+    "prAuc": [
+     0.098,
+     0.2431
+    ],
+    "rocAuc": [
+     0.7883,
+     0.8665
+    ],
+    "frameTpr": [
+     0.3242,
+     0.4988
+    ],
+    "frameFpr": [
+     0.077,
+     0.1216
+    ]
+   }
+  },
+  {
+   "configuration": "A2",
+   "condition": "nominal test split (9 scenario families)",
+   "dataset": "T-CAD synthetic simulator, held-out test split",
+   "runId": "ablation-test (45 scenarios, seeds 4000-4004)",
+   "sourceFile": "research-data/measured/confidence_intervals.csv",
+   "hardware": "Windows-11-10.0.26200-SP0 \u00b7 ARM64 \u00b7 ARMv8 (64-bit) Family 8 Model 1 Revision 201 \u00b7 12 cores \u00b7 31.6 GB \u00b7 Python 3.12.10",
+   "nScenarios": 45,
+   "level": "report",
+   "denominator": {
+    "rows": 77968,
+    "positives": 3560,
+    "negatives": 74408
+   },
+   "metrics": {
+    "reportTpr": 0.3492,
+    "reportFpr": 0.048,
+    "precision": 0.258,
+    "f1": 0.2967,
+    "prAuc": 0.2224,
+    "rocAuc": 0.865,
+    "frameTpr": 0.414,
+    "frameFpr": 0.122,
+    "eventDetectionRate": 0.9167,
+    "meanDetectionDelayS": 0.3182,
+    "latencyP95Ms": 40.6917
+   },
+   "ci95": {
+    "reportTpr": [
+     0.2526,
+     0.4443
+    ],
+    "reportFpr": [
+     0.0381,
+     0.0597
+    ],
+    "precision": [
+     0.1432,
+     0.379
+    ],
+    "f1": [
+     0.1879,
+     0.3866
+    ],
+    "prAuc": [
+     0.1224,
+     0.3366
+    ],
+    "rocAuc": [
+     0.8228,
+     0.8972
+    ],
+    "frameTpr": [
+     0.3301,
+     0.5024
+    ],
+    "frameFpr": [
+     0.096,
+     0.1526
+    ]
+   }
+  },
+  {
+   "configuration": "A3",
+   "condition": "nominal test split (9 scenario families)",
+   "dataset": "T-CAD synthetic simulator, held-out test split",
+   "runId": "ablation-test (45 scenarios, seeds 4000-4004)",
+   "sourceFile": "research-data/measured/confidence_intervals.csv",
+   "hardware": "Windows-11-10.0.26200-SP0 \u00b7 ARM64 \u00b7 ARMv8 (64-bit) Family 8 Model 1 Revision 201 \u00b7 12 cores \u00b7 31.6 GB \u00b7 Python 3.12.10",
+   "nScenarios": 45,
+   "level": "report",
+   "denominator": {
+    "rows": 77968,
+    "positives": 3560,
+    "negatives": 74408
+   },
+   "metrics": {
+    "reportTpr": 0.3253,
+    "reportFpr": 0.0517,
+    "precision": 0.2312,
+    "f1": 0.2703,
+    "prAuc": 0.1974,
+    "rocAuc": 0.8619,
+    "frameTpr": 0.4902,
+    "frameFpr": 0.0893,
+    "eventDetectionRate": 0.9333,
+    "meanDetectionDelayS": 0.4304,
+    "latencyP95Ms": 54.2566
+   },
+   "ci95": {
+    "reportTpr": [
+     0.2419,
+     0.4051
+    ],
+    "reportFpr": [
+     0.0404,
+     0.065
+    ],
+    "precision": [
+     0.1418,
+     0.3029
+    ],
+    "f1": [
+     0.1874,
+     0.3302
+    ],
+    "prAuc": [
+     0.122,
+     0.2673
+    ],
+    "rocAuc": [
+     0.8336,
+     0.8882
+    ],
+    "frameTpr": [
+     0.4003,
+     0.5847
+    ],
+    "frameFpr": [
+     0.0644,
+     0.1186
+    ]
+   }
+  },
+  {
+   "configuration": "A4",
+   "condition": "nominal test split (9 scenario families)",
+   "dataset": "T-CAD synthetic simulator, held-out test split",
+   "runId": "ablation-test (45 scenarios, seeds 4000-4004)",
+   "sourceFile": "research-data/measured/confidence_intervals.csv",
+   "hardware": "Windows-11-10.0.26200-SP0 \u00b7 ARM64 \u00b7 ARMv8 (64-bit) Family 8 Model 1 Revision 201 \u00b7 12 cores \u00b7 31.6 GB \u00b7 Python 3.12.10",
+   "nScenarios": 45,
+   "level": "report",
+   "denominator": {
+    "rows": 77968,
+    "positives": 3560,
+    "negatives": 74408
+   },
+   "metrics": {
+    "reportTpr": 0.5298,
+    "reportFpr": 0.048,
+    "precision": 0.3457,
+    "f1": 0.4184,
+    "prAuc": 0.3383,
+    "rocAuc": 0.9127,
+    "frameTpr": 0.5671,
+    "frameFpr": 0.1229,
+    "eventDetectionRate": 0.9833,
+    "meanDetectionDelayS": 0.4203,
+    "latencyP95Ms": 62.4468
+   },
+   "ci95": {
+    "reportTpr": [
+     0.4254,
+     0.6244
+    ],
+    "reportFpr": [
+     0.0376,
+     0.0605
+    ],
+    "precision": [
+     0.2062,
+     0.4759
+    ],
+    "f1": [
+     0.2875,
+     0.5158
+    ],
+    "prAuc": [
+     0.1995,
+     0.4816
+    ],
+    "rocAuc": [
+     0.8822,
+     0.9365
+    ],
+    "frameTpr": [
+     0.4756,
+     0.6573
+    ],
+    "frameFpr": [
+     0.0947,
+     0.1576
+    ]
+   }
+  },
+  {
+   "configuration": "A5",
+   "condition": "nominal test split (9 scenario families)",
+   "dataset": "T-CAD synthetic simulator, held-out test split",
+   "runId": "ablation-test (45 scenarios, seeds 4000-4004)",
+   "sourceFile": "research-data/measured/confidence_intervals.csv",
+   "hardware": "Windows-11-10.0.26200-SP0 \u00b7 ARM64 \u00b7 ARMv8 (64-bit) Family 8 Model 1 Revision 201 \u00b7 12 cores \u00b7 31.6 GB \u00b7 Python 3.12.10",
+   "nScenarios": 45,
+   "level": "report",
+   "denominator": {
+    "rows": 77968,
+    "positives": 3560,
+    "negatives": 74408
+   },
+   "metrics": {
+    "reportTpr": 0.5101,
+    "reportFpr": 0.0481,
+    "precision": 0.3365,
+    "f1": 0.4055,
+    "prAuc": 0.3248,
+    "rocAuc": 0.909,
+    "frameTpr": 0.5649,
+    "frameFpr": 0.1153,
+    "eventDetectionRate": 0.9833,
+    "meanDetectionDelayS": 0.3915,
+    "latencyP95Ms": 70.4243
+   },
+   "ci95": {
+    "reportTpr": [
+     0.408,
+     0.6044
+    ],
+    "reportFpr": [
+     0.0383,
+     0.0601
+    ],
+    "precision": [
+     0.2033,
+     0.4538
+    ],
+    "f1": [
+     0.2829,
+     0.4973
+    ],
+    "prAuc": [
+     0.1924,
+     0.4554
+    ],
+    "rocAuc": [
+     0.8795,
+     0.9334
+    ],
+    "frameTpr": [
+     0.4712,
+     0.6564
+    ],
+    "frameFpr": [
+     0.0885,
+     0.1488
+    ]
+   }
+  },
+  {
+   "configuration": "A5-LR",
+   "condition": "nominal test split (9 scenario families)",
+   "dataset": "T-CAD synthetic simulator, held-out test split",
+   "runId": "ablation-test (45 scenarios, seeds 4000-4004)",
+   "sourceFile": "research-data/measured/confidence_intervals.csv",
+   "hardware": "Windows-11-10.0.26200-SP0 \u00b7 ARM64 \u00b7 ARMv8 (64-bit) Family 8 Model 1 Revision 201 \u00b7 12 cores \u00b7 31.6 GB \u00b7 Python 3.12.10",
+   "nScenarios": 45,
+   "level": "report",
+   "denominator": {
+    "rows": 77968,
+    "positives": 3560,
+    "negatives": 74408
+   },
+   "metrics": {
+    "reportTpr": 0.8961,
+    "reportFpr": 0.0511,
+    "precision": 0.4563,
+    "f1": 0.6047,
+    "prAuc": 0.819,
+    "rocAuc": 0.9696,
+    "frameTpr": 0.9056,
+    "frameFpr": 0.1155,
+    "eventDetectionRate": 1.0,
+    "meanDetectionDelayS": 0.06,
+    "latencyP95Ms": 88.6359
+   },
+   "ci95": {
+    "reportTpr": [
+     0.8046,
+     0.9534
+    ],
+    "reportFpr": [
+     0.044,
+     0.0587
+    ],
+    "precision": [
+     0.3269,
+     0.5605
+    ],
+    "f1": [
+     0.4677,
+     0.6971
+    ],
+    "prAuc": [
+     0.6953,
+     0.8873
+    ],
+    "rocAuc": [
+     0.9447,
+     0.9856
+    ],
+    "frameTpr": [
+     0.8221,
+     0.9569
+    ],
+    "frameFpr": [
+     0.0981,
+     0.1345
+    ]
+   }
+  }
+ ]
+}

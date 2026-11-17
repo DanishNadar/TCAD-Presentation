@@ -1,0 +1,28 @@
+{
+  "n_test_scenarios": 45,
+  "n_report_rows": 80081,
+  "n_positive_rows": 3560,
+  "positive_fraction": 0.04445498932331015,
+  "thresholds": {
+    "A0": 10.000000000000002,
+    "A1": 10.002709673857876,
+    "A2": 8.907454546903253,
+    "A3": 15.618509658835942,
+    "A4": 12.419117504108941
+  },
+  "strong_cad": 13.750000000000002,
+  "rule_tau4": 12.592518185001193,
+  "lr_tau": 0.5918830551523423,
+  "variants": [
+    "main",
+    "hmm_static",
+    "hmm_adaptive",
+    "hmm_fused_emission",
+    "hmm_memory_evidence",
+    "naive_independence",
+    "uncalibrated"
+  ],
+  "scenarios_attempted": 99,
+  "scenarios_ok": 99,
+  "wall_time_s": 562.4542188644409
+}

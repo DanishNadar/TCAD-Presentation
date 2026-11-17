@@ -1,0 +1,9 @@
+attack_setting,source_group,attack_success_pct,iou,confidence_score,delta_ap_pct,cad_region_detection_pct,cad_frame_tpr_pct,cad_frame_fpr_pct,source
+[72]-Int.-Spoof,prior_attack_72,21.7,0.01,0.06,-62.8,100.0,34.0,10.3,"Zhang et al. 2024 Table 3, Adv-OPV2V"
+[72]-Int.-Remove,prior_attack_72,14.0,0.47,0.34,-61.8,100.0,39.7,7.6,"Zhang et al. 2024 Table 3, Adv-OPV2V"
+RC-Early-Spoof,paper_attack,86.0,0.55,0.38,-0.4,83.8,80.9,2.0,"Zhang et al. 2024 Table 3, Adv-OPV2V"
+RC-Early-Remove,paper_attack,87.3,0.07,0.03,-0.5,81.2,38.0,5.6,"Zhang et al. 2024 Table 3, Adv-OPV2V"
+Adv.-Int.-Spoof,paper_attack,90.0,0.46,0.71,-2.0,83.4,80.1,2.0,"Zhang et al. 2024 Table 3, Adv-OPV2V"
+Adv.-Int.-Remove,paper_attack,99.3,0.02,0.01,-3.9,83.6,42.5,2.2,"Zhang et al. 2024 Table 3, Adv-OPV2V"
+Naive-Late-Spoof,paper_attack,98.7,0.96,0.99,0,80.8,84.8,2.7,"Zhang et al. 2024 Table 3, Adv-OPV2V"
+Naive-Late-Remove,paper_attack,0.3,0.78,0.53,0,,,,"Zhang et al. 2024 Table 3, Adv-OPV2V; defense entries not reported"

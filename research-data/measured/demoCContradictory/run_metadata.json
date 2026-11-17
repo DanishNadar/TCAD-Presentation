@@ -1,0 +1,210 @@
+{
+  "run_id": "demo_C_contradictory",
+  "scenario": {
+    "scenario_id": "contradictory-s42",
+    "family": "contradictory",
+    "seed": 42,
+    "duration": 15.0,
+    "description": "Contradictory observation: one CAV's report contains a bounded synthetic phantom object.",
+    "vehicles": [
+      {
+        "entity_id": "cav_00",
+        "kind": "cav",
+        "direction": "south",
+        "lane": 0,
+        "maneuver": "left",
+        "start": -25.26,
+        "speed": 7.79,
+        "schedule": [],
+        "sensors": [
+          "lidar"
+        ]
+      },
+      {
+        "entity_id": "cav_01",
+        "kind": "cav",
+        "direction": "north",
+        "lane": 0,
+        "maneuver": "straight",
+        "start": -33.85,
+        "speed": 8.03,
+        "schedule": [],
+        "sensors": [
+          "lidar"
+        ]
+      },
+      {
+        "entity_id": "cav_02",
+        "kind": "cav",
+        "direction": "west",
+        "lane": 0,
+        "maneuver": "straight",
+        "start": -16.4,
+        "speed": 6.4,
+        "schedule": [],
+        "sensors": [
+          "lidar"
+        ]
+      },
+      {
+        "entity_id": "cav_03",
+        "kind": "cav",
+        "direction": "east",
+        "lane": 1,
+        "maneuver": "straight",
+        "start": -32.41,
+        "speed": 8.77,
+        "schedule": [],
+        "sensors": [
+          "lidar"
+        ]
+      },
+      {
+        "entity_id": "trf_00",
+        "kind": "traffic",
+        "direction": "north",
+        "lane": 0,
+        "maneuver": "straight",
+        "start": -47.69,
+        "speed": 8.72,
+        "schedule": [],
+        "sensors": []
+      },
+      {
+        "entity_id": "trf_01",
+        "kind": "traffic",
+        "direction": "west",
+        "lane": 1,
+        "maneuver": "straight",
+        "start": 1.07,
+        "speed": 7.66,
+        "schedule": [],
+        "sensors": []
+      },
+      {
+        "entity_id": "trf_02",
+        "kind": "traffic",
+        "direction": "south",
+        "lane": 0,
+        "maneuver": "straight",
+        "start": -51.79,
+        "speed": 5.1,
+        "schedule": [],
+        "sensors": []
+      }
+    ],
+    "statics": [
+      {
+        "entity_id": "prk_00",
+        "kind": "parked",
+        "x": -8.25,
+        "y": 25.09,
+        "yaw": -1.5707963267948966,
+        "length": 4.6,
+        "width": 1.9
+      },
+      {
+        "entity_id": "prk_01",
+        "kind": "parked",
+        "x": -8.25,
+        "y": -55.19,
+        "yaw": -1.5707963267948966,
+        "length": 4.6,
+        "width": 1.9
+      },
+      {
+        "entity_id": "prk_02",
+        "kind": "parked",
+        "x": -8.25,
+        "y": 55.68,
+        "yaw": -1.5707963267948966,
+        "length": 4.6,
+        "width": 1.9
+      },
+      {
+        "entity_id": "prk_03",
+        "kind": "parked",
+        "x": 27.36,
+        "y": -8.25,
+        "yaw": 0.0,
+        "length": 4.6,
+        "width": 1.9
+      },
+      {
+        "entity_id": "obs_00",
+        "kind": "obstacle",
+        "x": 17.48,
+        "y": -8.25,
+        "yaw": 0.0,
+        "length": 1.2,
+        "width": 0.6
+      },
+      {
+        "entity_id": "obs_01",
+        "kind": "obstacle",
+        "x": 34.98,
+        "y": 8.25,
+        "yaw": 0.0,
+        "length": 1.2,
+        "width": 0.6
+      }
+    ],
+    "faults": [
+      {
+        "fault_id": "bg_cav_00_0",
+        "fault_type": "transient_ghost",
+        "agent_id": "cav_00",
+        "t_start": 1.4000000000000001,
+        "t_end": 1.7000000000000002,
+        "params": {
+          "ahead": 10.649997929600156,
+          "lateral": -1.2235446958151632,
+          "radius": 0.8418281145601229
+        }
+      },
+      {
+        "fault_id": "bg_cav_02_0",
+        "fault_type": "transient_ghost",
+        "agent_id": "cav_02",
+        "t_start": 4.7,
+        "t_end": 4.9,
+        "params": {
+          "ahead": 20.101315630871202,
+          "lateral": -3.081795229567141,
+          "radius": 0.7356786454701204
+        }
+      },
+      {
+        "fault_id": "fab_0",
+        "fault_type": "fabricated_object",
+        "agent_id": "cav_00",
+        "t_start": 6.4,
+        "t_end": 9.4,
+        "params": {
+          "ahead": 12.752761391223018,
+          "lateral": 0.0,
+          "shadow": true
+        }
+      }
+    ],
+    "config_overrides": {}
+  },
+  "seed": 42,
+  "status": "ok",
+  "environment": {
+    "python": "3.12.10",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "machine": "ARM64",
+    "processor": "ARMv8 (64-bit) Family 8 Model 1 Revision 201, Qualcomm Technologies Inc",
+    "cpu_count": 12,
+    "memory_gb": 31.6,
+    "numpy": "2.5.1",
+    "scipy": "1.18.1",
+    "pandas": "3.0.6",
+    "matplotlib": "3.11.2",
+    "sklearn": "1.9.1",
+    "shapely": "2.2.0",
+    "pygame": "2.5.8"
+  },
+  "wall_time_s": 61.47150683403015
+}

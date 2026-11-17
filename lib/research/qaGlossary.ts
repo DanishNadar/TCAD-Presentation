@@ -1,0 +1,92 @@
+export const qaItems: { q: string; a: string; tag: "method" | "assumption" | "evaluation" | "limits" }[] = [
+  {
+    q: "Why use an HMM?",
+    tag: "method",
+    a: "Occupancy is a latent state observed through noisy, sometimes missing sensors — exactly the HMM setting. The forward filter is exact for a two-state cell, cheap (a few multiplies per cell per frame), and its parameters (transition and sensor models) are interpretable and can be fit from labeled data. Alternatives (particle filters, learned recurrent models) are more flexible but harder to calibrate and audit.",
+  },
+  {
+    q: "Why not rely exclusively on CAD?",
+    tag: "method",
+    a: "We keep CAD — T-CAD adds to it. CAD's decision is per frame and needs a benign observer at that instant; frame-level removal TPR is 38–43% in the paper. In our simulator, adding the HMM to fused evidence helps most exactly there: removal +0.104 AUROC, missing observations +0.032 (A4 vs A2). Overall, though, A4/A5 are statistically indistinguishable from our CAD baseline (AUROC 0.913 / 0.909 vs 0.911).",
+  },
+  {
+    q: "What assumptions does probabilistic fusion make?",
+    tag: "assumption",
+    a: "The product of likelihoods assumes vehicles' observation errors are conditionally independent given the true state, and that each likelihood model is calibrated. Both can fail: shared viewpoints, relayed data, or colluding attackers create correlation; miscalibrated sensors create over- or under-confidence.",
+  },
+  {
+    q: "How is sensor uncertainty represented?",
+    tag: "method",
+    a: "As likelihoods P(Z | X) per vehicle and cell, parameterized by reliability that should depend on range, occlusion, point density and sensor type. In the deck it's one slider; in the implementation it would be fit on held-out labeled data and checked with ECE / reliability diagrams.",
+  },
+  {
+    q: "What happens when observations are correlated?",
+    tag: "assumption",
+    a: "Naive fusion double-counts the shared information and becomes overconfident (Scene 10). Mitigations: temper correlated groups (weights summing to 1), covariance-intersection-style conservative fusion, or modeling the dependence explicitly. Identifying which sources are correlated is itself an open problem.",
+  },
+  {
+    q: "How are missing observations handled?",
+    tag: "method",
+    a: "Missing reports contribute no factor, so the posterior follows the transition prediction — missing is not contradiction. Measured: in the missing-observations family the HMM improves AUROC by +0.043 (A3 vs A1). But using unobserved-cell memory as if it were evidence collapses A3 to AUROC 0.697 — memory must not be treated as observation. If missingness is adversarial, the assumption breaks.",
+  },
+  {
+    q: "What causes false positives?",
+    tag: "limits",
+    a: "Measured: benign faults in the reporter raise FPR from ~4.8% (clean) to 9–13% for calibrated/fused configs (A0 stays 4.6%); 25–38% of benign fault episodes trigger at least one alarm. Localization error is the worst case (A0 FPR 3.5% → 47% at σ = 0.4 m). Moving traffic at 8 m/s raises A4's FPR to 7.9% vs A0 5.5% — the temporal prior contradicting genuine change.",
+  },
+  {
+    q: "How is detection latency measured?",
+    tag: "evaluation",
+    a: "Seconds from the first contradictory frame to the first alert, over 60 contradictory episodes, with misses counted separately. Measured mean delay: A0 0.33 s, A3 0.43 s, A4 0.42 s, A5 0.39 s, A5-LR 0.06 s (median 0.0–0.3 s). Temporal configs pay ~0.1 s — about one frame — for their memory.",
+  },
+  {
+    q: "What is the computational overhead?",
+    tag: "evaluation",
+    a: "Measured p95 per ego frame (Python, ARM64 laptop, 27,000 frames): A0 28 ms, A3 54 ms, A4 62 ms, A5 70 ms, A5-LR 89 ms; ≥ 99.7% of frames under 100 ms. HMM state adds ~2.7 MB. Not directly comparable to the paper's 92 ms, which includes map transmission on different hardware.",
+  },
+  {
+    q: "What do the ablation studies demonstrate?",
+    tag: "evaluation",
+    a: "On our simulator: A1, A2 and A3 alone are worse than CAD (AUROC 0.832 / 0.865 / 0.862 vs 0.911). Combining fusion with the HMM recovers it (A4 vs A2 +0.048 [0.033, 0.067], 5/5 seeds). A4 and A5 vs A0 are inconclusive. Only A5-LR wins clearly (0.970, TPR 0.90 vs 0.52 at ~5% FPR) — and may exploit simulator regularities.",
+  },
+  {
+    q: "What are the limitations of the proposed approach?",
+    tag: "limits",
+    a: "Our results come from a 2-D synthetic simulator with bounded message-level contradictions, not Adv-OPV2V or real attacks; A0 is CAD-inspired, not the authors' code. HMM hurts for 0.1–0.3 s contradictions; abstention never triggered; A5-LR may learn simulator artefacts. Plus the usual: correlated sources, adaptive temporally consistent attackers, localization error, and no detection without a benign observer.",
+  },
+  {
+    q: "What would need to change before real-world deployment?",
+    tag: "limits",
+    a: "Real-sensor calibration, validation on real multi-vehicle data, handling of localization and timing errors, rigorous runtime bounds on automotive hardware, integration with attacker identification and response, and safety-case evidence. This is a research prototype, not a safety solution.",
+  },
+];
+
+export const glossary: { term: string; def: string }[] = [
+  { term: "CAV", def: "Connected and autonomous vehicle." },
+  { term: "Collaborative perception", def: "Vehicles share sensor-derived information to perceive beyond their own line of sight." },
+  { term: "Early / intermediate / late fusion", def: "Sharing raw point clouds / neural feature maps / final object boxes." },
+  { term: "Data fabrication", def: "A participant sends crafted perception data to spoof or remove objects in a victim's perception." },
+  { term: "Spoofing / removal", def: "Creating a non-existent object / hiding a real one in the victim's perception output." },
+  { term: "Occupancy map", def: "Labels space as occupied, free, or unknown (unobserved)." },
+  { term: "CAD", def: "Collaborative Anomaly Detection (Zhang et al., 2024): geometric consistency checks between shared occupancy maps and perception output." },
+  { term: "ε_occ, ε_spoof, ε_remove", def: "CAD's conflict regions: occupied-vs-free between vehicles; boxes in free space; occupied space without a box." },
+  { term: "σ thresholds", def: "Minimum conflict area for CAD to raise an alarm." },
+  { term: "T-CAD", def: "Our extension (implemented; measured on our simulator): calibration, probabilistic fusion, temporal HMM inference, leave-one-out scoring, decision layer." },
+  { term: "Hidden state X_t", def: "The true occupancy of a region at time t (Free or Occupied); never observed directly." },
+  { term: "Observation Z_t", def: "A sensor reading (occ / free) or the absence of one (∅)." },
+  { term: "HMM", def: "Hidden Markov model: latent state with Markov transitions and state-dependent observations." },
+  { term: "Forward filter", def: "Recursive computation of P(X_t | Z_1:t): predict, weight by likelihood, normalize." },
+  { term: "Likelihood P(Z | X)", def: "How probable a reading is if the state were X." },
+  { term: "Log-odds", def: "log(p/(1−p)); independent evidence adds in log-odds." },
+  { term: "Calibration / ECE", def: "Confidence matches frequency; Expected Calibration Error averages |accuracy − confidence| over bins." },
+  { term: "Leave-one-out score", def: "A_i,t = −log P(Z_i,t | Z_−i,1:t): surprise of vehicle i given all others." },
+  { term: "TPR / FPR", def: "True-positive rate (detected attacks / attacks); false-positive rate (alarms on benign / benign)." },
+  { term: "Detection delay", def: "Frames between attack onset and first alarm." },
+  { term: "Ablation", def: "Removing or adding one component at a time to measure its contribution." },
+  { term: "A5-LR", def: "T-CAD with an L2-regularised logistic-regression decision layer (plus strong-CAD override); best measured result, possibly simulator-specific." },
+  { term: "AUROC / AUPRC", def: "Threshold-free ranking quality (ROC) / precision–recall area; AUPRC matters when positives are rare (4.4% here)." },
+  { term: "Frozen threshold", def: "Decision threshold chosen on the validation split (FPR ≤ 5%) and never re-tuned on test." },
+  { term: "Scenario bootstrap CI", def: "95% interval from resampling whole test scenarios, so correlated rows inside a scenario don't shrink the CI." },
+  { term: "ρ (rho)", def: "Measured correlation between sources' observation errors (≈ 0.68); used to temper fusion." },
+  { term: "Recorded simulator run", def: "A replay rendered from our simulator's recorded trace — a demonstration, not a metric." },
+];

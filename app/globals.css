@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   T-CAD semantic design tokens. Every color carries ONE meaning everywhere.
+   --------------------------------------------------------------------------- */
+@theme {
+  --font-display: "Space Grotesk Variable", "Space Grotesk", system-ui, sans-serif;
+  --font-sans: "IBM Plex Sans", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", "JetBrains Mono", ui-monospace, monospace;
+
+  --color-ink: #e8edf5;          /* primary text */
+  --color-ink-2: #a3adbd;        /* secondary text */
+  --color-ink-3: #6b7587;        /* muted text */
+  --color-void: #05070b;         /* page */
+  --color-panel: #0c1119;        /* surfaces */
+  --color-panel-2: #121926;
+  --color-line: #1d2636;
+
+  --color-sensor: #22d3ee;       /* cyan   — raw sensor observations / occupancy evidence */
+  --color-collab: #4f8cff;       /* blue   — collaborative / shared information */
+  --color-prob: #a78bfa;         /* purple — probabilistic inference */
+  --color-temporal: #f5a524;     /* amber  — temporal consistency / HMM */
+  --color-anomaly: #ff4d6d;      /* red    — anomalies / conflicting evidence */
+  --color-consistent: #34d399;   /* green  — consistent observations */
+  --color-unknown: #5b6474;      /* gray   — missing / unknown evidence */
+}
+
+:root { color-scheme: dark; }
+
+html, body {
+  height: 100%;
+  background: var(--color-void);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* KaTeX sizing inside the stage */
+.katex { font-size: 1.08em; }
+.katex-display { margin: 0.4em 0; }
+
+/* Equation-term highlight driven by \htmlClass{eq-term ...}{} */
+.eq-term { transition: color 300ms, background-color 300ms, box-shadow 300ms; border-radius: 4px; padding: 0 2px; }
+.eq-term.is-active { box-shadow: 0 0 0 1px currentColor inset; background: color-mix(in srgb, currentColor 16%, transparent); }
+
+/* Range sliders tuned for projector legibility */
+input[type="range"] {
+  -webkit-appearance: none; appearance: none; height: 4px; border-radius: 9999px;
+  background: var(--color-line); outline: none; cursor: pointer;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 16px; height: 16px; border-radius: 9999px;
+  background: var(--slider-color, var(--color-ink)); border: 2px solid var(--color-void);
+  box-shadow: 0 0 0 1px var(--slider-color, var(--color-ink));
+}
+input[type="range"]::-moz-range-thumb {
+  width: 14px; height: 14px; border-radius: 9999px;
+  background: var(--slider-color, var(--color-ink)); border: 2px solid var(--color-void);
+}
+input[type="range"]:focus-visible { box-shadow: 0 0 0 2px var(--slider-color, var(--color-ink)); }
+
+:focus-visible { outline: 2px solid var(--color-collab); outline-offset: 2px; }
+
+/* Subtle film grain + vignette on the stage */
+.stage-vignette::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.55) 100%);
+}
+
+.grid-bg {
+  background-image:
+    linear-gradient(to right, rgba(120,140,170,0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(120,140,170,0.06) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.hatch-unknown {
+  background-image: repeating-linear-gradient(135deg, rgba(91,100,116,0.55) 0 3px, transparent 3px 7px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}

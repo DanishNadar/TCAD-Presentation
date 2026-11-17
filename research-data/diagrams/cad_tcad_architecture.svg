@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-label="Redrawn conceptual diagram showing original CAD components and proposed T-CAD extension components">
+ <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0 0L10 5L0 10" fill="#b9c9da"/></marker></defs>
+ <rect width="1200" height="620" rx="24" fill="#091420"/>
+ <text x="50" y="61" fill="white" font-family="Arial" font-size="31" font-weight="bold">From CAD to proposed T-CAD</text>
+ <rect x="36" y="100" width="1128" height="216" rx="16" fill="#102b39" stroke="#2fc1df" stroke-width="2"/>
+ <text x="58" y="135" fill="#50d4ec" font-family="Arial" font-size="20">ORIGINAL CAD · ZHANG ET AL. 2024</text>
+ <g font-family="Arial" font-size="18" text-anchor="middle" fill="white">
+  <rect x="58" y="167" width="195" height="97" rx="12" fill="#16455a" stroke="#45bfd9"/><text x="155" y="206">Vehicle occupancy</text><text x="155" y="232">maps</text>
+  <rect x="297" y="167" width="184" height="97" rx="12" fill="#16455a" stroke="#45bfd9"/><text x="389" y="206">Tracking and</text><text x="389" y="232">synchronization</text>
+  <rect x="525" y="167" width="276" height="97" rx="12" fill="#16455a" stroke="#45bfd9"/><text x="663" y="202">Occupancy ↔ occupancy</text><text x="663" y="230">consistency</text>
+  <rect x="845" y="167" width="285" height="97" rx="12" fill="#16455a" stroke="#45bfd9"/><text x="988" y="202">Perception ↔ occupancy</text><text x="988" y="230">consistency</text>
+ </g>
+ <g stroke="#dceaf4" stroke-width="3" marker-end="url(#arrow)"><path d="M253 215H294"/><path d="M481 215H522"/><path d="M801 215H842"/></g>
+ <rect x="36" y="341" width="1128" height="220" rx="16" fill="#211b38" stroke="#b48bfa" stroke-width="2"/>
+ <text x="58" y="378" fill="#d1acff" font-family="Arial" font-size="20">T-CAD EXTENSION · MEASURED ON OUR SIMULATOR ONLY (NOT ADV-OPV2V)</text>
+ <g font-family="Arial" font-size="18" text-anchor="middle" fill="white">
+  <rect x="57" y="410" width="205" height="93" rx="12" fill="#48336b" stroke="#b48bfa"/><text x="160" y="447">Calibrated</text><text x="160" y="475">likelihoods</text>
+  <rect x="284" y="410" width="205" height="93" rx="12" fill="#48336b" stroke="#b48bfa"/><text x="386" y="447">Collaborative</text><text x="386" y="475">fusion</text>
+  <rect x="511" y="410" width="205" height="93" rx="12" fill="#6b4c25" stroke="#eab25e"/><text x="613" y="447">Temporal</text><text x="613" y="475">HMM filter</text>
+  <rect x="738" y="410" width="190" height="93" rx="12" fill="#6d3345" stroke="#ff7995"/><text x="833" y="447">Anomaly</text><text x="833" y="475">score</text>
+  <rect x="950" y="410" width="184" height="93" rx="12" fill="#345c44" stroke="#6bdd9b"/><text x="1042" y="447">Decision</text><text x="1042" y="475">layer</text>
+ </g>
+ <g stroke="#dceaf4" stroke-width="3" marker-end="url(#arrow)"><path d="M262 456H281"/><path d="M489 456H508"/><path d="M716 456H735"/><path d="M928 456H947"/></g>
+ <path d="M600 317V340" stroke="#b48bfa" stroke-width="4" stroke-dasharray="8 5" marker-end="url(#arrow)"/>
+ <text x="600" y="594" fill="#b6c3ce" font-size="17" font-family="Arial" text-anchor="middle">Original conceptual redraw · reconciled with src/tcad/models (2026-11-17) · results: research-data/measured</text>
+</svg>

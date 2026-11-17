@@ -1,0 +1,415 @@
+project:
+  name: T-CAD
+  results_dir: results
+  calibration_dir: data/calibration
+simulation:
+  dt: 0.1
+  duration: 15.0
+  world:
+    half_size: 70.0
+    lane_width: 3.5
+    lanes_per_direction: 2
+    shoulder_width: 2.5
+    building_margin: 3.0
+  grid:
+    resolution: 0.5
+  vehicle:
+    length: 4.6
+    width: 1.9
+  motion:
+    lookahead: 10.0
+    min_gap: 2.0
+    time_headway: 1.0
+    max_accel: 3.0
+    intersection_half: 7.0
+    approach_zone: 10.0
+scenario_defaults:
+  n_cavs: 4
+  n_traffic: 3
+  n_parked: 4
+  n_obstacles: 2
+  benign_ghost_rate: 0.05
+sensors:
+  enabled:
+  - lidar
+  lidar:
+    num_rays: 360
+    max_range: 50.0
+    range_noise_base: 0.03
+    range_noise_per_m: 0.002
+    miss_prob_base: 0.02
+    miss_prob_far: 0.1
+    false_return_prob: 0.002
+    ground_extent_noise: 0.2
+    noise_scale: 1.0
+  radar:
+    max_range: 60.0
+    fov_deg: 150.0
+    detection_prob: 0.9
+    range_sigma: 0.4
+    bearing_sigma_deg: 2.5
+    velocity_sigma: 0.3
+    clutter_rate: 0.2
+  camera:
+    max_range: 45.0
+    fov_deg: 90.0
+    false_negative_rate: 0.1
+    false_positive_rate: 0.05
+    bearing_sigma_deg: 1.0
+    depth_relative_sigma: 0.06
+  localization:
+    position_sigma: 0.0
+    yaw_sigma_deg: 0.0
+    max_error: 1.0
+perception:
+  occupancy:
+    free_margin: 0.3
+    cluster_gap: 1.0
+    occupied_buffer: 0.27
+    blind_margin: 1.0
+  detection:
+    min_points: 3
+    max_extent: 8.0
+  intra_vehicle_fusion:
+    association_gate: 2.5
+    confidence_combination: max
+    standalone_min_confidence: 0.6
+    detections_to_occupancy: true
+    occupancy_min_confidence: 0.7
+  tracking:
+    gate: 3.0
+    alpha: 0.6
+    beta: 0.25
+    max_misses: 3
+    min_hits: 2
+network:
+  comm_range: 150.0
+  delay_base: 0.05
+  delay_jitter: 0.02
+  delay_min: 0.0
+  delay_max: 1.0
+  packet_loss: 0.0
+  bursty_loss: false
+  burst_enter_prob: 0.05
+  burst_exit_prob: 0.3
+  burst_loss_prob: 0.9
+  preserve_order: false
+  update_period_frames: 1
+  clock_sync_sigma: 0.0
+  late_threshold: 0.1
+cad:
+  synchronization:
+    max_age: 0.5
+    motion_compensation: true
+    min_speed: 0.5
+    footprint_margin: 0.5
+  spoof_check: true
+  remove_check: true
+  sigma_occ_m2: 1.0
+  sliver_opening: true
+  spoof_box_shrink: 0.5
+  remove_min_cells: 4
+  min_overlap_cells: 20
+  default_thresholds:
+    A0: 3.0
+    A1: 2.0
+    A2: 2.0
+    A3: 2.0
+    A4: 2.0
+observation_model:
+  distance_bins:
+  - 0.0
+  - 10.0
+  - 20.0
+  - 30.0
+  - 40.0
+  - 50.5
+  unknown_policy: uninformative
+  laplace_alpha: 1.0
+  use_calibrated: true
+  calibration_file: data/calibration/observation_model.json
+  nominal:
+    p_obs_occ_given_occ: 0.9
+    p_obs_free_given_occ: 0.05
+    p_obs_free_given_free: 0.95
+    p_obs_occ_given_free: 0.02
+bayesian_fusion:
+  prior_occupied: null
+  correlation_model: tempered
+  rho: null
+  max_abs_llr: 8.0
+hmm:
+  transition:
+    mode: learned
+    p_free_to_occ: 0.01
+    p_occ_to_free: 0.03
+  motion_model: motion_compensated
+  motion:
+    min_speed: 0.5
+    arrive_prob: 0.8
+  adaptive:
+    ema: 0.2
+    gain: 0.5
+    max_switch: 0.3
+  emission_mode: per_vehicle
+  fused_max_llr: 3.0
+  evidence_requires_current_observation: true
+tcad:
+  strong_cad_fpr: 0.01
+  target_fpr: 0.05
+  logistic:
+    C: 1.0
+    class_weight: balanced
+experiments:
+  families:
+  - normal
+  - occlusion
+  - contradictory
+  - removal
+  - transient_noise
+  - moving_object
+  - missing_observations
+  - correlated_errors
+  - persistent_fabrication
+  splits:
+    calibration:
+      seed_start: 1000
+      seeds_per_family: 2
+      families:
+      - normal
+      - occlusion
+      - transient_noise
+      - moving_object
+      - correlated_errors
+    train:
+      seed_start: 2000
+      seeds_per_family: 3
+    validation:
+      seed_start: 3000
+      seeds_per_family: 3
+    test:
+      seed_start: 4000
+      seeds_per_family: 5
+  duration: 15.0
+  workers: 10
+  save_traces:
+  - test
+  warmup_frames: 5
+  target_fpr: 0.05
+  strong_cad_fpr: 0.01
+  test_variants:
+    hmm_static:
+      hmm:
+        motion_model: static
+    hmm_adaptive:
+      hmm:
+        motion_model: adaptive
+    hmm_fused_emission:
+      hmm:
+        emission_mode: fused
+    hmm_memory_evidence:
+      hmm:
+        evidence_requires_current_observation: false
+    naive_independence:
+      bayesian_fusion:
+        correlation_model: none
+    uncalibrated:
+      observation_model:
+        use_calibrated: false
+  bootstrap:
+    n_resamples: 1000
+    confidence: 0.95
+    seed: 7
+  robustness:
+    seeds:
+    - 5000
+    - 5001
+    - 5002
+    - 5003
+    - 5004
+    families:
+    - contradictory
+    - removal
+    - transient_noise
+    experiments:
+      R1_sensor_noise:
+        kind: config
+        param: sensors.lidar.noise_scale
+        values:
+        - 0.5
+        - 1.0
+        - 2.0
+        - 4.0
+        - 6.0
+      R2_missing:
+        kind: config
+        param: network.packet_loss
+        values:
+        - 0.0
+        - 0.2
+        - 0.4
+        - 0.6
+        - 0.8
+      R3_observers:
+        kind: scenario
+        param: n_cavs
+        values:
+        - 2
+        - 3
+        - 4
+        - 6
+      R4_temporal:
+        kind: scenario
+        param: fab_duration
+        values:
+        - 0.1
+        - 0.3
+        - 0.5
+        - 1.0
+        - 2.0
+        - 4.0
+        families:
+        - contradictory
+      R5_moving:
+        kind: scenario
+        param: traffic_speed_max
+        values:
+        - 4.0
+        - 8.0
+        - 12.0
+        - 16.0
+        families:
+        - moving_object
+        - contradictory
+        variants:
+          hmm_static:
+            hmm:
+              motion_model: static
+          hmm_adaptive:
+            hmm:
+              motion_model: adaptive
+      R6_localization:
+        kind: config
+        param: sensors.localization.position_sigma
+        values:
+        - 0.0
+        - 0.1
+        - 0.2
+        - 0.4
+        - 0.8
+      R7_correlation:
+        kind: scenario
+        param: disturbance_mode
+        values:
+        - independent
+        - shared
+        families:
+        - correlated_errors
+        variants:
+          naive_independence:
+            bayesian_fusion:
+              correlation_model: none
+      R8_delay:
+        kind: config
+        param: network.delay_base
+        values:
+        - 0.0
+        - 0.05
+        - 0.1
+        - 0.2
+        - 0.4
+      R9_transitions:
+        kind: model
+        values:
+        - - 0.001
+          - 0.001
+        - - 0.01
+          - 0.03
+        - - 0.05
+          - 0.1
+        - - 0.2
+          - 0.3
+        - learned
+    R10_runtime:
+      duration: 5.0
+      seed: 6000
+      family: normal
+      sweeps:
+        n_cavs:
+        - 2
+        - 4
+        - 6
+        - 8
+        grid_resolution:
+        - 1.0
+        - 0.5
+        - 0.25
+        lidar_rays:
+        - 180
+        - 360
+        - 720
+        n_traffic:
+        - 0
+        - 5
+        - 10
+        - 20
+        update_period_frames:
+        - 1
+        - 2
+        - 5
+visualization:
+  window:
+  - 1600
+  - 960
+  viewport_px: 940
+  fps: 30
+  sim_steps_per_second: 10
+  font: consolas
+  presentation_mode: false
+  colors:
+    sensing:
+    - 66
+    - 135
+    - 245
+    consistent:
+    - 46
+    - 160
+    - 67
+    uncertain:
+    - 230
+    - 180
+    - 30
+    conflict:
+    - 220
+    - 50
+    - 47
+    probabilistic:
+    - 140
+    - 80
+    - 200
+    unknown:
+    - 120
+    - 120
+    - 120
+    road:
+    - 52
+    - 54
+    - 60
+    shoulder:
+    - 70
+    - 72
+    - 78
+    building:
+    - 95
+    - 85
+    - 75
+    background:
+    - 28
+    - 30
+    - 34
+  figures:
+    dpi: 200
+    formats:
+    - png
+    - svg
+    - pdf

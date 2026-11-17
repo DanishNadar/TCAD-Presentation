@@ -1,0 +1,134 @@
+{
+ "sourceFiles": [
+  "research-data/published/published_cad_table3.csv",
+  "research-data/published/published_headline_metrics.csv"
+ ],
+ "table3": [
+  {
+   "setting": "[72]-Int.-Spoof",
+   "group": "prior_attack_72",
+   "attackSuccPct": 21.7,
+   "iou": 0.01,
+   "confidence": 0.06,
+   "deltaApPct": -62.8,
+   "regionDetectionPct": 100.0,
+   "frameTprPct": 34.0,
+   "frameFprPct": 10.3,
+   "source": "Zhang et al. 2024 Table 3, Adv-OPV2V"
+  },
+  {
+   "setting": "[72]-Int.-Remove",
+   "group": "prior_attack_72",
+   "attackSuccPct": 14.0,
+   "iou": 0.47,
+   "confidence": 0.34,
+   "deltaApPct": -61.8,
+   "regionDetectionPct": 100.0,
+   "frameTprPct": 39.7,
+   "frameFprPct": 7.6,
+   "source": "Zhang et al. 2024 Table 3, Adv-OPV2V"
+  },
+  {
+   "setting": "RC-Early-Spoof",
+   "group": "paper_attack",
+   "attackSuccPct": 86.0,
+   "iou": 0.55,
+   "confidence": 0.38,
+   "deltaApPct": -0.4,
+   "regionDetectionPct": 83.8,
+   "frameTprPct": 80.9,
+   "frameFprPct": 2.0,
+   "source": "Zhang et al. 2024 Table 3, Adv-OPV2V"
+  },
+  {
+   "setting": "RC-Early-Remove",
+   "group": "paper_attack",
+   "attackSuccPct": 87.3,
+   "iou": 0.07,
+   "confidence": 0.03,
+   "deltaApPct": -0.5,
+   "regionDetectionPct": 81.2,
+   "frameTprPct": 38.0,
+   "frameFprPct": 5.6,
+   "source": "Zhang et al. 2024 Table 3, Adv-OPV2V"
+  },
+  {
+   "setting": "Adv.-Int.-Spoof",
+   "group": "paper_attack",
+   "attackSuccPct": 90.0,
+   "iou": 0.46,
+   "confidence": 0.71,
+   "deltaApPct": -2.0,
+   "regionDetectionPct": 83.4,
+   "frameTprPct": 80.1,
+   "frameFprPct": 2.0,
+   "source": "Zhang et al. 2024 Table 3, Adv-OPV2V"
+  },
+  {
+   "setting": "Adv.-Int.-Remove",
+   "group": "paper_attack",
+   "attackSuccPct": 99.3,
+   "iou": 0.02,
+   "confidence": 0.01,
+   "deltaApPct": -3.9,
+   "regionDetectionPct": 83.6,
+   "frameTprPct": 42.5,
+   "frameFprPct": 2.2,
+   "source": "Zhang et al. 2024 Table 3, Adv-OPV2V"
+  },
+  {
+   "setting": "Naive-Late-Spoof",
+   "group": "paper_attack",
+   "attackSuccPct": 98.7,
+   "iou": 0.96,
+   "confidence": 0.99,
+   "deltaApPct": 0.0,
+   "regionDetectionPct": 80.8,
+   "frameTprPct": 84.8,
+   "frameFprPct": 2.7,
+   "source": "Zhang et al. 2024 Table 3, Adv-OPV2V"
+  },
+  {
+   "setting": "Naive-Late-Remove",
+   "group": "paper_attack",
+   "attackSuccPct": 0.3,
+   "iou": 0.78,
+   "confidence": 0.53,
+   "deltaApPct": 0.0,
+   "regionDetectionPct": null,
+   "frameTprPct": null,
+   "frameFprPct": null,
+   "source": "Zhang et al. 2024 Table 3, Adv-OPV2V; defense entries not reported"
+  }
+ ],
+ "headline": [
+  {
+   "metric": "data_fabrication_attack_success",
+   "value": 86.0,
+   "unit": "percent",
+   "sourceLocation": "Abstract",
+   "qualifier": "Greater than 86 percent in high-fidelity simulated scenarios; not a single pooled row in Table 3"
+  },
+  {
+   "metric": "cad_detection_aggregate",
+   "value": 91.5,
+   "unit": "percent",
+   "sourceLocation": "Abstract and Introduction",
+   "qualifier": "Paper-reported aggregate; do not confuse with Table 3 region or frame metrics"
+  },
+  {
+   "metric": "cad_false_positive_aggregate",
+   "value": 3.0,
+   "unit": "percent",
+   "sourceLocation": "Abstract",
+   "qualifier": "Paper reports 3 percent; some Table 3 row FPR values exceed this"
+  },
+  {
+   "metric": "cad_end_to_end_latency",
+   "value": 92.0,
+   "unit": "milliseconds",
+   "sourceLocation": "Section 6.4 and presentation",
+   "qualifier": "Verify measured configuration and accounting; includes transmission and consistency checks"
+  }
+ ]
+}

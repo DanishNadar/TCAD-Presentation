@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 560" role="img" aria-label="Conceptual illustration of an occupancy hidden Markov model's prior prediction observation and posterior steps">
+ <rect width="1100" height="560" rx="22" fill="#0a1626"/>
+ <text x="44" y="54" fill="#ffffff" font-size="29" font-family="Arial" font-weight="bold">A region's occupancy belief evolves over time</text>
+ <g font-family="Arial" text-anchor="middle" fill="#e4e9f2">
+  <text x="133" y="118" font-size="21">Previous belief</text><text x="410" y="118" font-size="21">Predict state</text><text x="688" y="118" font-size="21">New evidence</text><text x="970" y="118" font-size="21">Posterior</text>
+  <rect x="34" y="145" width="198" height="224" rx="14" fill="#162a46" stroke="#68aef8"/>
+  <rect x="311" y="145" width="198" height="224" rx="14" fill="#162a46" stroke="#68aef8"/>
+  <rect x="589" y="145" width="198" height="224" rx="14" fill="#322744" stroke="#b998ef"/>
+  <rect x="868" y="145" width="198" height="224" rx="14" fill="#332c36" stroke="#ebb05c"/>
+  <text x="133" y="193" font-size="16">P(Occupied)</text><text x="410" y="193" font-size="16">Transition model</text><text x="688" y="193" font-size="16">Sensor likelihood</text><text x="970" y="193" font-size="16">Updated P(Occupied)</text>
+  <text x="133" y="295" fill="#65ccff" font-size="52">0.30</text><text x="410" y="295" fill="#65ccff" font-size="52">0.34</text><text x="688" y="295" fill="#c69aff" font-size="52">Zₜ</text><text x="970" y="295" fill="#ffc274" font-size="52">0.67</text>
+  <text x="133" y="342" fill="#b4c0cc" font-size="16">Illustrative prior</text><text x="410" y="342" fill="#b4c0cc" font-size="16">Illustrative prediction</text><text x="688" y="342" fill="#b4c0cc" font-size="16">Illustrative observation</text><text x="970" y="342" fill="#b4c0cc" font-size="16">Illustrative update</text>
+ </g>
+ <g stroke="#91a3b6" fill="none" stroke-width="4"><path d="M240 255h59"/><path d="M293 248l9 7-9 7"/><path d="M517 255h59"/><path d="M570 248l9 7-9 7"/><path d="M795 255h59"/><path d="M848 248l9 7-9 7"/></g>
+ <path d="M50 458H1050" stroke="#526778" stroke-width="2"/>
+ <g font-size="17" font-family="Arial" fill="#c8d5e1"><text x="50" y="415">For each time step: predict using prior state → apply sensor evidence → normalize into an updated belief</text><text x="50" y="501">Unknown = missing/insufficient evidence; Free/Occupied = proposed binary hidden states</text><text x="50" y="535" fill="#edbd74">NUMERIC VALUES ARE SYNTHETIC EXAMPLES — NOT EXPERIMENTAL RESULTS</text></g>
+</svg>

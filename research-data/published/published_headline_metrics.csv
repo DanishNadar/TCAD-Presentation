@@ -1,0 +1,5 @@
+metric,value,unit,source_location,qualifier
+data_fabrication_attack_success,86,percent,Abstract,Greater than 86 percent in high-fidelity simulated scenarios; not a single pooled row in Table 3
+cad_detection_aggregate,91.5,percent,Abstract and Introduction,Paper-reported aggregate; do not confuse with Table 3 region or frame metrics
+cad_false_positive_aggregate,3,percent,Abstract,Paper reports 3 percent; some Table 3 row FPR values exceed this
+cad_end_to_end_latency,92,milliseconds,Section 6.4 and presentation,"Verify measured configuration and accounting; includes transmission and consistency checks"
