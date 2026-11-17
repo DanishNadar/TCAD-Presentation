@@ -4,7 +4,7 @@
 
 | Scene | Visualization | Source | Badge |
 |---|---|---|---|
-| 2 | Occlusion replays (world, LiDAR) | Our simulator, scenario B, seed 42 | Recorded simulator run |
+| 2 | Occlusion replays (world, LiDAR) | my simulation, scenario B, seed 42 | Recorded simulator run |
 | 3 | Merged-occupancy replay | Scenario C, seed 42 (phantom 6.5–9.4 s) | Recorded simulator run |
 | 5 | CAD-conflict replay; fig05; fidelity table | Scenario C replay · `figure_manifest.csv` → fig05 · results report §2 | Published method + Our measured |
 | 6 | Table 3 chart (7 metrics) + headline tiles | `research-data/published/published_cad_table3.csv`, `published_headline_metrics.csv` | Published — Zhang et al. (2024) |

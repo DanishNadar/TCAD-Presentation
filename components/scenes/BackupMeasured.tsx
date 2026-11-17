@@ -177,7 +177,7 @@ export function SReplays() {
   const [sel, setSel] = useState<VideoId>("contradictoryTcad");
   return (
     <div className="absolute inset-0 px-16 pb-8 pt-12">
-      <SceneHeader kicker="Backup · Simulator replays" accent="#2dd4bf" title="Recorded runs of our simulator" subtitle="Rendered with the T-CAD repository's replayExperiment.py from headless recordings (seed 42, calibrated model, validation thresholds)." right={<EvidenceBadge kind="recorded" detail="demonstrations, not metrics" />} />
+      <SceneHeader kicker="Backup · Simulator replays" accent="#2dd4bf" title="Recorded runs of my simulation" subtitle="Rendered with the T-CAD repository's replayExperiment.py from headless recordings (seed 42, calibrated model, validation thresholds)." right={<EvidenceBadge kind="recorded" detail="demonstrations, not metrics" />} />
       <div className="mt-5 flex gap-5">
         <VideoPanel key={sel} id={sel} width={960} />
         <div className="flex flex-1 flex-col gap-1.5" data-capture-keys>

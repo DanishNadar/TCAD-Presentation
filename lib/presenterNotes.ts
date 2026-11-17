@@ -43,7 +43,7 @@ export const sceneNotes: SceneNotes[] = [
     script:
       "On the left is what the ego vehicle knows using only its own sensors. On the right is the same moment with collaboration. The hidden car on the left side is invisible to ego — dashed gray means it exists but ego cannot perceive it. With collaboration, it appears as a blue detection: ego now knows about it from someone else's sensor. Vehicles can share at three levels: raw LiDAR point clouds, which is early fusion; intermediate neural-network feature maps; or final object boxes, which is late fusion. The paper we study attacks all three. Either way, the benefit is real: occlusion and range are physical limits no single sensor can overcome.",
     interaction:
-      "Split / EGO only / Collaborative; then ‘Our simulator (recorded)’ to show the same occlusion in our real simulator.",
+      "Split / EGO only / Collaborative; then ‘my simulation (recorded)’ to show the same occlusion in our real simulator.",
     transition: "But every one of those blue detections is information ego did not measure itself.",
   },
   {
@@ -60,7 +60,7 @@ export const sceneNotes: SceneNotes[] = [
     script:
       "Now suppose one participant is malicious or compromised. In this synthetic illustration, CAV-B's shared data makes ego's perception report an object directly ahead — in red. Nothing is there. In the paper's threat model the attacker is an insider, a legitimate participant who sends crafted perception data, and the goal is either to spoof a nonexistent object, causing a hard brake, or to remove a real object, raising collision risk. We are not showing how that's done — only what the victim sees. And notice the important detail: ego's own LiDAR scanned that region and saw free space. The evidence disagrees. So the question becomes: how can the receiving vehicle determine which shared observations are trustworthy?",
     interaction:
-      "Benign → Fabricated report; then ‘Our simulator’ shows the merged map turning red when cav00's phantom report arrives (6.5–9.4 s).",
+      "Benign → Fabricated report; then ‘my simulation’ shows the merged map turning red when cav00's phantom report arrives (6.5–9.4 s).",
     transition: "That's exactly the question Zhang and colleagues tackled at USENIX Security 2024.",
   },
   {
@@ -203,7 +203,7 @@ export const sceneNotes: SceneNotes[] = [
     objective: "Explain A0–A5 and be explicit about status.",
     points: ["Configurations exactly as in src/tcad/models/tcad.py; all scored on the same recorded test observations.", "A1/A2/A3 alone < A0 (AUROC 0.832 / 0.865 / 0.862 vs 0.911).", "A4 vs A2 +0.048 AUROC [0.033, 0.067], 5/5 seeds: fusion and time are complementary.", "A4/A5 vs A0: inconclusive. A5-LR: 0.970 AUROC, TPR 0.90 vs 0.52 at ~5% FPR.", "Abstention never triggered; A5-LR may learn simulator regularities."],
     script:
-      "This is the ablation as implemented. A0 is our CAD-inspired baseline. A1 adds calibrated likelihoods, A2 Bayesian leave-one-out fusion, A3 a per-source HMM — each isolating one idea. A4 combines fusion and the HMM, A5 adds the rule-based decision layer, and A5-LR a learned logistic layer. Selecting a configuration lights up its modules and shows its measured AUROC, TPR and FPR with confidence intervals. The honest pattern: A1 to A3 on their own are worse than CAD. Fusion plus HMM, A4, recovers to CAD's level, and A5 matches it — the differences are inside the confidence intervals. Only A5-LR clearly beats CAD, and because it is learned, it may be exploiting regularities of our simulator.",
+      "This is the ablation as implemented. A0 is our CAD-inspired baseline. A1 adds calibrated likelihoods, A2 Bayesian leave-one-out fusion, A3 a per-source HMM — each isolating one idea. A4 combines fusion and the HMM, A5 adds the rule-based decision layer, and A5-LR a learned logistic layer. Selecting a configuration lights up its modules and shows its measured AUROC, TPR and FPR with confidence intervals. The honest pattern: A1 to A3 on their own are worse than CAD. Fusion plus HMM, A4, recovers to CAD's level, and A5 matches it — the differences are inside the confidence intervals. Only A5-LR clearly beats CAD, and because it is learned, it may be exploiting regularities of my simulation.",
     interaction:
       "Click ND…A5-LR; each button shows its AUROC; the detail card shows CIs and paired differences vs A0.",
     transition: "So what will we measure, and what would count as an improvement?",
@@ -215,7 +215,7 @@ export const sceneNotes: SceneNotes[] = [
     objective: "Present measured results with CIs, denominators and scope; no comparison to the paper's numbers.",
     points: ["Endpoint /results/tcad-results.json (schema 1.0) ← research-data/measured via import script.", "AUROC: A0 0.911, A4 0.913, A5 0.909, A5-LR 0.970 (95% CIs on hover).", "Frozen-threshold TPR: A0 0.52, A5 0.51, A5-LR 0.90 at FPR ≈ 0.05.", "p95 runtime 28 ms (A0) → 89 ms (A5-LR).", "Not comparable to the paper: different data, attacks, denominators."],
     script:
-      "These are our measured results, loaded from the results endpoint. Forty-five held-out scenarios, about eighty thousand report assessments, 4.4 percent of them contradictory, with thresholds frozen on a separate validation split and 95 percent scenario-bootstrap intervals. On AUROC, CAD scores 0.911; the full interpretable T-CAD rule 0.909 — no difference. At the frozen threshold, TPR is about 52 percent for both at a 5 percent false-positive rate. The logistic decision layer reaches 0.970 and 90 percent TPR at the same false-positive rate. The component table shows where value comes from: fusion and the HMM help each other, calibration alone hurts. Runtime stays under 100 milliseconds at the 95th percentile. And please note: this is our simulator, not Adv-OPV2V — these numbers are not comparable to the paper's 91.5 percent.",
+      "These are our measured results, loaded from the results endpoint. Forty-five held-out scenarios, about eighty thousand report assessments, 4.4 percent of them contradictory, with thresholds frozen on a separate validation split and 95 percent scenario-bootstrap intervals. On AUROC, CAD scores 0.911; the full interpretable T-CAD rule 0.909 — no difference. At the frozen threshold, TPR is about 52 percent for both at a 5 percent false-positive rate. The logistic decision layer reaches 0.970 and 90 percent TPR at the same false-positive rate. The component table shows where value comes from: fusion and the HMM help each other, calibration alone hurts. Runtime stays under 100 milliseconds at the 95th percentile. And please note: this is my simulation, not Adv-OPV2V — these numbers are not comparable to the paper's 91.5 percent.",
     interaction:
       "Switch metrics (AUROC, AUPRC, TPR, FPR, frame-level); hover a row for its CI and denominator.",
     transition: "Let me bring it back to the intersection.",
@@ -241,7 +241,7 @@ export const backupNotes: Record<string, { title: string; script: string }> = {
   robustness: { title: "Robustness Sweeps", script: "Pick the sweep the question is about. Strongest messages: localization error is the worst case for every method; A4 stays at or above A0 under delay; R4 shows the HMM hurting for very short contradictions." },
   "research-questions": { title: "Research Questions", script: "Fifteen questions with SUPPORTED / NEGATIVE / MIXED / INCONCLUSIVE verdicts from 95% CIs. Lead with Q1 (NEGATIVE: CAD-HMM alone is worse) and Q3 (SUPPORTED: fusion + HMM complement each other)." },
   figures: { title: "Figure Gallery", script: "All 20 repository figures; click to enlarge. Kind labels come from the figure manifest." },
-  replays: { title: "Simulator Replays", script: "Recorded with our simulator's replay exporter. They demonstrate behaviour; the metrics are on Scenes 12–13." },
+  replays: { title: "Simulator Replays", script: "Recorded with my simulation's replay exporter. They demonstrate behaviour; the metrics are on Scenes 12–13." },
   qa: { title: "Q&A Backup", script: "Pick the question the professor asked from the list; each answer is two to four sentences with the caveat built in." },
   glossary: { title: "Glossary", script: "Reference only." },
   references: { title: "References", script: "All published numbers come from Zhang et al. 2024 (USENIX Security), verified against arXiv:2309.12955v2 Table 3, Abstract, and §6." },

@@ -46,11 +46,11 @@ Generated from `lib/presenterNotes.ts`. Main deck target: **15:00** across 14 sc
 
 **Learning objective.** Establish the benefit before the risk: occlusion and range limits are physical.
 
-**Visual.** Split view of the same world: EGO-only vs collaborative; ground-truth toggle; ‘Our simulator’ shows recorded occlusion replays (world + LiDAR).
+**Visual.** Split view of the same world: EGO-only vs collaborative; ground-truth toggle; ‘my simulation’ shows recorded occlusion replays (world + LiDAR).
 
 **Math.** —
 
-**Interaction.** Split / EGO only / Collaborative; then ‘Our simulator (recorded)’ to show the same occlusion in our real simulator.
+**Interaction.** Split / EGO only / Collaborative; then ‘my simulation (recorded)’ to show the same occlusion in our real simulator.
 
 **Talking points.**
 - Same scene, same instant — left: EGO alone; right: EGO + shared data.
@@ -73,7 +73,7 @@ Generated from `lib/presenterNotes.ts`. Main deck target: **15:00** across 14 sc
 
 **Math.** —
 
-**Interaction.** Benign → Fabricated report; then ‘Our simulator’ shows the merged map turning red when cav00's phantom report arrives (6.5–9.4 s).
+**Interaction.** Benign → Fabricated report; then ‘my simulation’ shows the merged map turning red when cav00's phantom report arrives (6.5–9.4 s).
 
 **Talking points.**
 - Synthetic illustration only — we model the *effect* of a fabricated report, not any mechanism.
@@ -295,7 +295,7 @@ Generated from `lib/presenterNotes.ts`. Main deck target: **15:00** across 14 sc
 
 **Script.**
 
-> This is the ablation as implemented. A0 is our CAD-inspired baseline. A1 adds calibrated likelihoods, A2 Bayesian leave-one-out fusion, A3 a per-source HMM — each isolating one idea. A4 combines fusion and the HMM, A5 adds the rule-based decision layer, and A5-LR a learned logistic layer. Selecting a configuration lights up its modules and shows its measured AUROC, TPR and FPR with confidence intervals. The honest pattern: A1 to A3 on their own are worse than CAD. Fusion plus HMM, A4, recovers to CAD's level, and A5 matches it — the differences are inside the confidence intervals. Only A5-LR clearly beats CAD, and because it is learned, it may be exploiting regularities of our simulator.
+> This is the ablation as implemented. A0 is our CAD-inspired baseline. A1 adds calibrated likelihoods, A2 Bayesian leave-one-out fusion, A3 a per-source HMM — each isolating one idea. A4 combines fusion and the HMM, A5 adds the rule-based decision layer, and A5-LR a learned logistic layer. Selecting a configuration lights up its modules and shows its measured AUROC, TPR and FPR with confidence intervals. The honest pattern: A1 to A3 on their own are worse than CAD. Fusion plus HMM, A4, recovers to CAD's level, and A5 matches it — the differences are inside the confidence intervals. Only A5-LR clearly beats CAD, and because it is learned, it may be exploiting regularities of my simulation.
 
 **Transition →** So what will we measure, and what would count as an improvement?
 
@@ -319,7 +319,7 @@ Generated from `lib/presenterNotes.ts`. Main deck target: **15:00** across 14 sc
 
 **Script.**
 
-> These are our measured results, loaded from the results endpoint. Forty-five held-out scenarios, about eighty thousand report assessments, 4.4 percent of them contradictory, with thresholds frozen on a separate validation split and 95 percent scenario-bootstrap intervals. On AUROC, CAD scores 0.911; the full interpretable T-CAD rule 0.909 — no difference. At the frozen threshold, TPR is about 52 percent for both at a 5 percent false-positive rate. The logistic decision layer reaches 0.970 and 90 percent TPR at the same false-positive rate. The component table shows where value comes from: fusion and the HMM help each other, calibration alone hurts. Runtime stays under 100 milliseconds at the 95th percentile. And please note: this is our simulator, not Adv-OPV2V — these numbers are not comparable to the paper's 91.5 percent.
+> These are our measured results, loaded from the results endpoint. Forty-five held-out scenarios, about eighty thousand report assessments, 4.4 percent of them contradictory, with thresholds frozen on a separate validation split and 95 percent scenario-bootstrap intervals. On AUROC, CAD scores 0.911; the full interpretable T-CAD rule 0.909 — no difference. At the frozen threshold, TPR is about 52 percent for both at a 5 percent false-positive rate. The logistic decision layer reaches 0.970 and 90 percent TPR at the same false-positive rate. The component table shows where value comes from: fusion and the HMM help each other, calibration alone hurts. Runtime stays under 100 milliseconds at the 95th percentile. And please note: this is my simulation, not Adv-OPV2V — these numbers are not comparable to the paper's 91.5 percent.
 
 **Transition →** Let me bring it back to the intersection.
 
@@ -352,7 +352,7 @@ Generated from `lib/presenterNotes.ts`. Main deck target: **15:00** across 14 sc
 Occupancy is a latent state observed through noisy, sometimes missing sensors — exactly the HMM setting. The forward filter is exact for a two-state cell, cheap (a few multiplies per cell per frame), and its parameters (transition and sensor models) are interpretable and can be fit from labeled data. Alternatives (particle filters, learned recurrent models) are more flexible but harder to calibrate and audit.
 
 ### Why not rely exclusively on CAD?
-We keep CAD — T-CAD adds to it. CAD's decision is per frame and needs a benign observer at that instant; frame-level removal TPR is 38–43% in the paper. In our simulator, adding the HMM to fused evidence helps most exactly there: removal +0.104 AUROC, missing observations +0.032 (A4 vs A2). Overall, though, A4/A5 are statistically indistinguishable from our CAD baseline (AUROC 0.913 / 0.909 vs 0.911).
+We keep CAD — T-CAD adds to it. CAD's decision is per frame and needs a benign observer at that instant; frame-level removal TPR is 38–43% in the paper. In my simulation, adding the HMM to fused evidence helps most exactly there: removal +0.104 AUROC, missing observations +0.032 (A4 vs A2). Overall, though, A4/A5 are statistically indistinguishable from our CAD baseline (AUROC 0.913 / 0.909 vs 0.911).
 
 ### What assumptions does probabilistic fusion make?
 The product of likelihoods assumes vehicles' observation errors are conditionally independent given the true state, and that each likelihood model is calibrated. Both can fail: shared viewpoints, relayed data, or colluding attackers create correlation; miscalibrated sensors create over- or under-confidence.
@@ -376,7 +376,7 @@ Seconds from the first contradictory frame to the first alert, over 60 contradic
 Measured p95 per ego frame (Python, ARM64 laptop, 27,000 frames): A0 28 ms, A3 54 ms, A4 62 ms, A5 70 ms, A5-LR 89 ms; ≥ 99.7% of frames under 100 ms. HMM state adds ~2.7 MB. Not directly comparable to the paper's 92 ms, which includes map transmission on different hardware.
 
 ### What do the ablation studies demonstrate?
-On our simulator: A1, A2 and A3 alone are worse than CAD (AUROC 0.832 / 0.865 / 0.862 vs 0.911). Combining fusion with the HMM recovers it (A4 vs A2 +0.048 [0.033, 0.067], 5/5 seeds). A4 and A5 vs A0 are inconclusive. Only A5-LR wins clearly (0.970, TPR 0.90 vs 0.52 at ~5% FPR) — and may exploit simulator regularities.
+On my simulation: A1, A2 and A3 alone are worse than CAD (AUROC 0.832 / 0.865 / 0.862 vs 0.911). Combining fusion with the HMM recovers it (A4 vs A2 +0.048 [0.033, 0.067], 5/5 seeds). A4 and A5 vs A0 are inconclusive. Only A5-LR wins clearly (0.970, TPR 0.90 vs 0.52 at ~5% FPR) — and may exploit simulator regularities.
 
 ### What are the limitations of the proposed approach?
 Our results come from a 2-D synthetic simulator with bounded message-level contradictions, not Adv-OPV2V or real attacks; A0 is CAD-inspired, not the authors' code. HMM hurts for 0.1–0.3 s contradictions; abstention never triggered; A5-LR may learn simulator artefacts. Plus the usual: correlated sources, adaptive temporally consistent attackers, localization error, and no detection without a benign observer.

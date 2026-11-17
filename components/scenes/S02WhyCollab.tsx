@@ -32,7 +32,7 @@ export function S02WhyCollab() {
             { value: "split", label: "Split" },
             { value: "ego", label: "EGO only" },
             { value: "collab", label: "Collaborative" },
-            { value: "recorded", label: "Our simulator (recorded)" },
+            { value: "recorded", label: "my simulation (recorded)" },
           ]}
         />
         <div className={`flex items-center gap-6 ${view === "recorded" ? "invisible" : ""}`}>

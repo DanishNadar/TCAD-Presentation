@@ -1,15 +1,58 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 560" role="img" aria-label="Conceptual top-down intersection showing an ego vehicle, a collaborating vehicle, a building occlusion and an unseen object">
- <defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#081422"/><stop offset="1" stop-color="#111b30"/></linearGradient><pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="#193449" stroke-width="1"/></pattern></defs>
- <rect width="1000" height="560" fill="url(#bg)"/><rect width="1000" height="560" fill="url(#grid)"/>
- <path d="M0 220H1000V370H0Z" fill="#2a3747"/><path d="M425 0H585V560H425Z" fill="#2a3747"/>
- <path d="M0 295H1000M505 0V560" stroke="#a2b3c0" stroke-width="3" stroke-dasharray="23 19" opacity=".5"/>
- <rect x="590" y="48" width="290" height="150" rx="12" fill="#475368" stroke="#8691a5" stroke-width="3"/><text x="735" y="120" text-anchor="middle" font-size="26" fill="white" font-family="Arial">BUILDING</text><text x="735" y="150" text-anchor="middle" font-size="16" fill="#cad1db" font-family="Arial">Physical occlusion</text>
- <path d="M350 290L590 160L900 285L590 350Z" fill="#ecb04b" opacity=".11" stroke="#ecb04b" stroke-dasharray="10 8" stroke-width="2"/>
- <circle cx="338" cy="292" r="163" fill="#35c6e8" opacity=".07" stroke="#35c6e8" stroke-width="2"/><circle cx="778" cy="292" r="163" fill="#a47df5" opacity=".07" stroke="#a47df5" stroke-width="2"/>
- <rect x="306" y="270" width="64" height="43" rx="10" fill="#20c1e2" stroke="white" stroke-width="2"/><text x="338" y="262" fill="white" font-size="17" font-family="Arial" text-anchor="middle">EGO</text>
- <rect x="744" y="270" width="68" height="43" rx="10" fill="#9573e7" stroke="white" stroke-width="2"/><text x="778" y="262" fill="white" font-size="17" font-family="Arial" text-anchor="middle">PARTNER</text>
- <rect x="670" y="332" width="46" height="27" rx="6" fill="#f4bd5d" stroke="white" stroke-width="2"/><text x="695" y="385" fill="#ffdf9e" font-size="17" font-family="Arial" text-anchor="middle">Occluded object</text>
- <path d="M369 276Q552 92 743 276" stroke="#54deae" stroke-width="4" fill="none" stroke-dasharray="11 8"/><path d="M729 265L746 275L728 280" fill="none" stroke="#54deae" stroke-width="4"/>
- <text x="500" y="74" text-anchor="middle" fill="#b6f7d8" font-size="22" font-family="Arial">Collaborative perception shares another viewpoint</text>
- <text x="28" y="490" fill="#49d2eb" font-size="18" font-family="Arial">CYAN · local observation</text><text x="28" y="520" fill="#b38cff" font-size="18" font-family="Arial">PURPLE · collaborator</text><text x="580" y="490" fill="#f4c16c" font-size="18" font-family="Arial">AMBER · occlusion / uncertainty</text><text x="580" y="520" fill="#55dea8" font-size="18" font-family="Arial">GREEN · communication</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620" role="img" aria-label="Conceptual top-down intersection: a building blocks the ego vehicle's view of an object on the cross street; a partner vehicle on the cross street sees it and shares its map over V2V">
+ <defs>
+  <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="#162c40" stroke-width="1"/></pattern>
+  <pattern id="hatch" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0V12" stroke="#ecb04b" stroke-width="2" opacity=".35"/></pattern>
+  <clipPath id="map"><rect x="0" y="70" width="1000" height="550"/></clipPath>
+  <marker id="v2v" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" refX="13" refY="8" orient="auto"><path d="M2 2L14 8L2 14" fill="none" stroke="#54deae" stroke-width="3"/></marker>
+ </defs>
+ <rect width="1000" height="620" fill="#0a1626"/>
+ <text x="32" y="44" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="bold">Collaborative perception: a second viewpoint fills an occlusion</text>
+
+ <g clip-path="url(#map)">
+  <rect x="0" y="70" width="1000" height="550" fill="url(#grid)"/>
+  <!-- roads (map origin shifted down by 70) -->
+  <rect x="0" y="300" width="1000" height="100" fill="#2a3747"/>
+  <rect x="440" y="70" width="120" height="550" fill="#2a3747"/>
+  <path d="M0 350H440M560 350H1000M500 70V300M500 400V620" stroke="#a2b3c0" stroke-width="3" stroke-dasharray="22 18" opacity=".45"/>
+
+  <!-- ego sensing range -->
+  <circle cx="200" cy="350" r="230" fill="#35c6e8" opacity=".08" stroke="#35c6e8" stroke-width="2"/>
+  <!-- partner field of view (looking north along the cross street) -->
+  <path d="M500 520L410 90H590Z" fill="#a47df5" opacity=".13" stroke="#a47df5" stroke-width="2" stroke-dasharray="8 6"/>
+  <!-- region hidden from ego by the building (rays from ego through the building's silhouette corners) -->
+  <path d="M270 110L281 70H981L410 275Z" fill="url(#hatch)" stroke="#ecb04b" stroke-width="2" stroke-dasharray="10 7"/>
+
+  <!-- building -->
+  <rect x="270" y="110" width="140" height="165" rx="10" fill="#475368" stroke="#8691a5" stroke-width="3"/>
+  <text x="340" y="190" text-anchor="middle" font-size="19" font-weight="bold" fill="#ffffff" font-family="Arial, Helvetica, sans-serif">BUILDING</text>
+  <text x="340" y="214" text-anchor="middle" font-size="14" fill="#cad1db" font-family="Arial, Helvetica, sans-serif">occluder</text>
+
+  <!-- occluded object on the cross street -->
+  <rect x="482" y="168" width="36" height="52" rx="6" fill="#f4bd5d" stroke="#ffffff" stroke-width="2"/>
+  <path d="M592 246L524 204" stroke="#ffdf9e" stroke-width="1.5"/>
+  <text x="598" y="254" fill="#ffdf9e" font-size="17" font-family="Arial, Helvetica, sans-serif">Object hidden from ego</text>
+  <text x="598" y="276" fill="#d9c7a3" font-size="14" font-family="Arial, Helvetica, sans-serif">(inside the building's shadow)</text>
+
+  <!-- ego (heading east) -->
+  <rect x="172" y="333" width="58" height="34" rx="8" fill="#20c1e2" stroke="#ffffff" stroke-width="2"/>
+  <text x="201" y="322" fill="#ffffff" font-size="17" font-weight="bold" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">EGO</text>
+
+  <!-- partner (heading north) -->
+  <rect x="483" y="500" width="34" height="56" rx="8" fill="#9573e7" stroke="#ffffff" stroke-width="2"/>
+  <text x="530" y="534" fill="#ffffff" font-size="17" font-weight="bold" font-family="Arial, Helvetica, sans-serif">PARTNER</text>
+
+  <!-- V2V message: partner shares its map with ego -->
+  <path d="M478 540Q260 560 210 378" fill="none" stroke="#54deae" stroke-width="3.5" stroke-dasharray="11 8" marker-end="url(#v2v)"/>
+  <text x="250" y="590" fill="#b6f7d8" font-size="16" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">V2V: partner shares its occupancy map</text>
+ </g>
+
+ <!-- legend -->
+ <g font-family="Arial, Helvetica, sans-serif" font-size="15">
+  <rect x="640" y="440" width="340" height="160" rx="10" fill="#0a1626" opacity=".88" stroke="#2c425a"/>
+  <rect x="658" y="460" width="22" height="14" rx="3" fill="#35c6e8" opacity=".5" stroke="#35c6e8"/><text x="692" y="472" fill="#49d2eb">Ego sensing range</text>
+  <rect x="658" y="492" width="22" height="14" rx="3" fill="url(#hatch)" stroke="#ecb04b"/><text x="692" y="504" fill="#f4c16c">Occluded from ego (shadow)</text>
+  <rect x="658" y="524" width="22" height="14" rx="3" fill="#a47df5" opacity=".5" stroke="#a47df5"/><text x="692" y="536" fill="#b38cff">Partner field of view</text>
+  <path d="M658 563H682" stroke="#54deae" stroke-width="3.5" stroke-dasharray="7 5"/><text x="692" y="568" fill="#55dea8">V2V communication</text>
+  <text x="658" y="590" fill="#8fa1b3" font-size="12.5">Conceptual sketch — not to scale, not a simulator frame</text>
+ </g>
 </svg>

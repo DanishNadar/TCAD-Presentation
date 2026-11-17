@@ -13,7 +13,7 @@ The two packages disagree on one point. The handoff says no measured T-CAD resul
 |---|---|
 | PUBLISHED — ZHANG ET AL. (2024) | Paper numbers; every one traces to `research-data/published/*.csv` |
 | OUR MEASURED EXPERIMENT | T-CAD repository results, `research-data/measured/` (synthetic simulator, 45 test scenarios) |
-| RECORDED SIMULATOR RUN | Videos rendered from our simulator: demonstrations, not metrics |
+| RECORDED SIMULATOR RUN | Videos rendered from my simulation: demonstrations, not metrics |
 | ILLUSTRATIVE SIMULATION | In-browser teaching simulations (`lib/sim/*`) |
 | PROPOSED / NOT YET MEASURED | Used only by the Scene 13 empty state and the ND row |
 
@@ -77,7 +77,9 @@ These runs use the calibrated observation model and validation thresholds (conve
 
 ## 4. Diagrams
 
-`research-data/diagrams/*.svg` (handoff, new editable diagrams). `cad_tcad_architecture.svg` wording was updated from "not yet empirically validated" to "measured on our simulator only (not Adv-OPV2V)". All three appear in the figure gallery; the CAD→T-CAD diagram is also on Scene 7.
+`research-data/diagrams/*.svg` (handoff, new editable diagrams). `cad_tcad_architecture.svg` wording was updated from "not yet empirically validated" to "measured on my simulation only (not Adv-OPV2V)". All three appear in the figure gallery; the CAD→T-CAD diagram is also on Scene 7.
+
+Redraw pass (2026-11-17): the three concept SVGs were redrawn to remove overlaps and inaccuracies (the occlusion scene now has the building actually blocking ego's line of sight; the HMM example uses the calibrated p01/p10, so the prediction decays 0.30 → 0.28 instead of rising; oversized arrowheads fixed) and now carry intrinsic `width`/`height` so they size correctly in gallery thumbnails and the lightbox. The matplotlib diagrams fig01, fig06, fig07 and fig08 had overlapping titles, clipped boxes and tangled arrows; they were redrawn with the same content and parameters as SVG sources in `research-data/diagrams/figures/` and rendered at 2× into `public/figures/` (same filenames). The self-citation of the T-CAD repository was removed from the references slide because there is no published paper or public repository to link.
 
 ## 5. Still missing / not claimed
 

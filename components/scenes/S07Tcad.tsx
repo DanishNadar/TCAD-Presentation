@@ -60,7 +60,7 @@ export function S07Tcad() {
                 { value: "diagram", label: "Concept diagram" },
               ]}
             />
-            <EvidenceBadge kind="measured" detail="implemented & evaluated in our simulator" />
+            <EvidenceBadge kind="measured" detail="implemented & evaluated in my simulation" />
           </div>
         }
       />

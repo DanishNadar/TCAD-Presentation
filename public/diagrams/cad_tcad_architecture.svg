@@ -1,26 +1,40 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-label="Redrawn conceptual diagram showing original CAD components and proposed T-CAD extension components">
- <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0 0L10 5L0 10" fill="#b9c9da"/></marker></defs>
- <rect width="1200" height="620" rx="24" fill="#091420"/>
- <text x="50" y="61" fill="white" font-family="Arial" font-size="31" font-weight="bold">From CAD to proposed T-CAD</text>
- <rect x="36" y="100" width="1128" height="216" rx="16" fill="#102b39" stroke="#2fc1df" stroke-width="2"/>
- <text x="58" y="135" fill="#50d4ec" font-family="Arial" font-size="20">ORIGINAL CAD · ZHANG ET AL. 2024</text>
- <g font-family="Arial" font-size="18" text-anchor="middle" fill="white">
-  <rect x="58" y="167" width="195" height="97" rx="12" fill="#16455a" stroke="#45bfd9"/><text x="155" y="206">Vehicle occupancy</text><text x="155" y="232">maps</text>
-  <rect x="297" y="167" width="184" height="97" rx="12" fill="#16455a" stroke="#45bfd9"/><text x="389" y="206">Tracking and</text><text x="389" y="232">synchronization</text>
-  <rect x="525" y="167" width="276" height="97" rx="12" fill="#16455a" stroke="#45bfd9"/><text x="663" y="202">Occupancy ↔ occupancy</text><text x="663" y="230">consistency</text>
-  <rect x="845" y="167" width="285" height="97" rx="12" fill="#16455a" stroke="#45bfd9"/><text x="988" y="202">Perception ↔ occupancy</text><text x="988" y="230">consistency</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="640" viewBox="0 0 1200 640" role="img" aria-label="Redrawn conceptual diagram: the original CAD pipeline and the T-CAD extension that consumes the same per-vehicle maps and keeps CAD's alert">
+ <defs>
+  <marker id="arrow" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" refX="12" refY="7" orient="auto"><path d="M1 1L13 7L1 13Z" fill="#dceaf4"/></marker>
+  <marker id="arrowP" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" refX="12" refY="7" orient="auto"><path d="M1 1L13 7L1 13Z" fill="#c9a6ff"/></marker>
+  <marker id="arrowC" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" refX="12" refY="7" orient="auto"><path d="M1 1L13 7L1 13Z" fill="#50d4ec"/></marker>
+ </defs>
+ <rect width="1200" height="640" rx="24" fill="#091420"/>
+ <text x="48" y="60" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="bold">From CAD to T-CAD</text>
+
+ <!-- original CAD -->
+ <rect x="36" y="96" width="1128" height="196" rx="16" fill="#102b39" stroke="#2fc1df" stroke-width="2"/>
+ <text x="58" y="130" fill="#50d4ec" font-family="Arial, Helvetica, sans-serif" font-size="18" letter-spacing="1">ORIGINAL CAD · ZHANG ET AL. 2024</text>
+ <g font-family="Arial, Helvetica, sans-serif" font-size="18" text-anchor="middle" fill="#ffffff">
+  <rect x="58" y="156" width="220" height="96" rx="12" fill="#16455a" stroke="#45bfd9"/><text x="168" y="198">Per-vehicle</text><text x="168" y="224">occupancy maps</text>
+  <rect x="330" y="156" width="220" height="96" rx="12" fill="#16455a" stroke="#45bfd9"/><text x="440" y="198">Tracking and</text><text x="440" y="224">synchronization</text>
+  <rect x="602" y="156" width="252" height="96" rx="12" fill="#16455a" stroke="#45bfd9"/><text x="728" y="198">Occupancy ↔ occupancy</text><text x="728" y="224">consistency</text>
+  <rect x="906" y="156" width="236" height="96" rx="12" fill="#16455a" stroke="#45bfd9"/><text x="1024" y="198">Perception ↔ occupancy</text><text x="1024" y="224">consistency</text>
  </g>
- <g stroke="#dceaf4" stroke-width="3" marker-end="url(#arrow)"><path d="M253 215H294"/><path d="M481 215H522"/><path d="M801 215H842"/></g>
- <rect x="36" y="341" width="1128" height="220" rx="16" fill="#211b38" stroke="#b48bfa" stroke-width="2"/>
- <text x="58" y="378" fill="#d1acff" font-family="Arial" font-size="20">T-CAD EXTENSION · MEASURED ON OUR SIMULATOR ONLY (NOT ADV-OPV2V)</text>
- <g font-family="Arial" font-size="18" text-anchor="middle" fill="white">
-  <rect x="57" y="410" width="205" height="93" rx="12" fill="#48336b" stroke="#b48bfa"/><text x="160" y="447">Calibrated</text><text x="160" y="475">likelihoods</text>
-  <rect x="284" y="410" width="205" height="93" rx="12" fill="#48336b" stroke="#b48bfa"/><text x="386" y="447">Collaborative</text><text x="386" y="475">fusion</text>
-  <rect x="511" y="410" width="205" height="93" rx="12" fill="#6b4c25" stroke="#eab25e"/><text x="613" y="447">Temporal</text><text x="613" y="475">HMM filter</text>
-  <rect x="738" y="410" width="190" height="93" rx="12" fill="#6d3345" stroke="#ff7995"/><text x="833" y="447">Anomaly</text><text x="833" y="475">score</text>
-  <rect x="950" y="410" width="184" height="93" rx="12" fill="#345c44" stroke="#6bdd9b"/><text x="1042" y="447">Decision</text><text x="1042" y="475">layer</text>
+ <g stroke="#dceaf4" stroke-width="2.5" marker-end="url(#arrow)"><path d="M280 204H327"/><path d="M552 204H599"/><path d="M856 204H903"/></g>
+
+ <!-- T-CAD extension -->
+ <rect x="36" y="350" width="1128" height="210" rx="16" fill="#211b38" stroke="#b48bfa" stroke-width="2"/>
+ <text x="58" y="384" fill="#d1acff" font-family="Arial, Helvetica, sans-serif" font-size="18" letter-spacing="1">T-CAD EXTENSION · EVALUATED IN MY SIMULATION ONLY (NOT ADV-OPV2V)</text>
+ <g font-family="Arial, Helvetica, sans-serif" font-size="18" text-anchor="middle" fill="#ffffff">
+  <rect x="58" y="414" width="190" height="96" rx="12" fill="#48336b" stroke="#b48bfa"/><text x="153" y="456">Calibrated</text><text x="153" y="482">likelihoods</text>
+  <rect x="290" y="414" width="190" height="96" rx="12" fill="#48336b" stroke="#b48bfa"/><text x="385" y="456">Tempered</text><text x="385" y="482">Bayesian fusion</text>
+  <rect x="522" y="414" width="190" height="96" rx="12" fill="#6b4c25" stroke="#eab25e"/><text x="617" y="456">Temporal</text><text x="617" y="482">HMM filter</text>
+  <rect x="754" y="414" width="190" height="96" rx="12" fill="#6d3345" stroke="#ff7995"/><text x="849" y="456">Leave-one-out</text><text x="849" y="482">anomaly score</text>
+  <rect x="986" y="414" width="156" height="96" rx="12" fill="#345c44" stroke="#6bdd9b"/><text x="1064" y="456">Decision</text><text x="1064" y="482">layer</text>
  </g>
- <g stroke="#dceaf4" stroke-width="3" marker-end="url(#arrow)"><path d="M262 456H281"/><path d="M489 456H508"/><path d="M716 456H735"/><path d="M928 456H947"/></g>
- <path d="M600 317V340" stroke="#b48bfa" stroke-width="4" stroke-dasharray="8 5" marker-end="url(#arrow)"/>
- <text x="600" y="594" fill="#b6c3ce" font-size="17" font-family="Arial" text-anchor="middle">Original conceptual redraw · reconciled with src/tcad/models (2026-11-17) · results: research-data/measured</text>
+ <g stroke="#dceaf4" stroke-width="2.5" marker-end="url(#arrow)"><path d="M250 462H287"/><path d="M482 462H519"/><path d="M714 462H751"/><path d="M946 462H983"/></g>
+
+ <!-- links between the two pipelines -->
+ <path d="M168 254V411" stroke="#c9a6ff" stroke-width="2.5" stroke-dasharray="8 6" marker-end="url(#arrowP)"/>
+ <text x="182" y="326" fill="#d1acff" font-family="Arial, Helvetica, sans-serif" font-size="15">same per-vehicle maps</text>
+ <path d="M1064 254V411" stroke="#50d4ec" stroke-width="2.5" stroke-dasharray="8 6" marker-end="url(#arrowC)"/>
+ <text x="1050" y="326" fill="#7fe0f2" font-family="Arial, Helvetica, sans-serif" font-size="15" text-anchor="end">strong CAD alert is preserved</text>
+
+ <text x="600" y="604" fill="#b6c3ce" font-size="16" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">Conceptual redraw · reconciled with src/tcad/models · results: research-data/measured</text>
 </svg>

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="440" viewBox="0 0 900 440" font-family="Arial, Helvetica, sans-serif">
+ <defs>
+  <marker id="a" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#333"/></marker>
+  <marker id="r" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#d62728"/></marker>
+  <style>.b{stroke:#444;stroke-width:1.2}.t{font-size:13.5px;font-weight:bold;text-anchor:middle;fill:#111}.s{font-size:11.5px;text-anchor:middle;fill:#222}.sub{font-size:9.5px}</style>
+ </defs>
+ <rect width="900" height="440" fill="#fff"/>
+ <text x="450" y="30" text-anchor="middle" font-size="16.5" fill="#111">Bayesian multi-vehicle corroboration (A2): a report never validates itself</text>
+
+ <!-- other vehicles' evidence -->
+ <rect class="b" x="30" y="80" width="190" height="52" rx="8" fill="#dbe8fb"/><text class="t" x="125" y="111">ego map  z<tspan class="sub" dy="3">ego</tspan></text>
+ <rect class="b" x="30" y="150" width="190" height="52" rx="8" fill="#dbe8fb"/><text class="t" x="125" y="181">report k  z<tspan class="sub" dy="3">k</tspan></text>
+ <rect class="b" x="30" y="220" width="190" height="52" rx="8" fill="#dbe8fb"/><text class="t" x="125" y="251">report m  z<tspan class="sub" dy="3">m</tspan></text>
+ <!-- report under test -->
+ <rect class="b" x="30" y="320" width="190" height="52" rx="8" fill="#f6d0cd"/><text class="t" x="125" y="351">report j  z<tspan class="sub" dy="3">j</tspan><tspan dy="-3"> (under test)</tspan></text>
+
+ <!-- fusion -->
+ <rect class="b" x="320" y="120" width="250" height="130" rx="8" fill="#e6dcf4"/>
+ <text class="t" x="445" y="148">Leave-j-out fusion</text>
+ <text class="s" x="445" y="176">logit P = logit(π) + a(n) · Σ<tspan class="sub" dy="3">i≠j</tspan><tspan dy="-3"> LLR</tspan><tspan class="sub" dy="3">i</tspan></text>
+ <text class="s" x="445" y="198">a(n) = 1 / (1 + (n−1) ρ)</text>
+ <text class="s" x="445" y="224">π = 0.017,  ρ = 0.68</text>
+
+ <!-- corroboration -->
+ <rect class="b" x="640" y="120" width="235" height="130" rx="8" fill="#f6d0cd"/>
+ <text class="t" x="757" y="148">Corroboration of z<tspan class="sub" dy="3">j</tspan></text>
+ <text class="s" x="757" y="176">evidence e = excess of</text>
+ <text class="s" x="757" y="194">P(not claimed) over the prior,</text>
+ <text class="s" x="757" y="212">weighted by the credibility</text>
+ <text class="s" x="757" y="230">of j's own claim</text>
+
+ <g stroke="#333" stroke-width="1.5" fill="none" marker-end="url(#a)">
+  <path d="M220 106L317 160"/>
+  <path d="M220 176H317"/>
+  <path d="M220 246L317 192"/>
+  <path d="M570 185H637"/>
+ </g>
+ <text x="603" y="177" font-size="10.5" fill="#444" text-anchor="middle">P(others)</text>
+
+ <!-- j routed around the fusion box -->
+ <path d="M220 346H757V253" stroke="#d62728" stroke-width="1.8" fill="none" marker-end="url(#r)"/>
+ <text x="480" y="338" font-size="12" fill="#d62728" text-anchor="middle">z<tspan font-size="9" dy="3">j</tspan><tspan dy="-3"> only supplies the claim being tested — it is excluded from its own fusion</tspan></text>
+
+ <text x="885" y="428" text-anchor="end" font-size="10" fill="#777">illustrative; numeric parameters from data/calibration/observationModel.json · redrawn for legibility</text>
+</svg>

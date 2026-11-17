@@ -7,7 +7,7 @@ export const qaItems: { q: string; a: string; tag: "method" | "assumption" | "ev
   {
     q: "Why not rely exclusively on CAD?",
     tag: "method",
-    a: "We keep CAD — T-CAD adds to it. CAD's decision is per frame and needs a benign observer at that instant; frame-level removal TPR is 38–43% in the paper. In our simulator, adding the HMM to fused evidence helps most exactly there: removal +0.104 AUROC, missing observations +0.032 (A4 vs A2). Overall, though, A4/A5 are statistically indistinguishable from our CAD baseline (AUROC 0.913 / 0.909 vs 0.911).",
+    a: "We keep CAD — T-CAD adds to it. CAD's decision is per frame and needs a benign observer at that instant; frame-level removal TPR is 38–43% in the paper. In my simulation, adding the HMM to fused evidence helps most exactly there: removal +0.104 AUROC, missing observations +0.032 (A4 vs A2). Overall, though, A4/A5 are statistically indistinguishable from our CAD baseline (AUROC 0.913 / 0.909 vs 0.911).",
   },
   {
     q: "What assumptions does probabilistic fusion make?",
@@ -47,7 +47,7 @@ export const qaItems: { q: string; a: string; tag: "method" | "assumption" | "ev
   {
     q: "What do the ablation studies demonstrate?",
     tag: "evaluation",
-    a: "On our simulator: A1, A2 and A3 alone are worse than CAD (AUROC 0.832 / 0.865 / 0.862 vs 0.911). Combining fusion with the HMM recovers it (A4 vs A2 +0.048 [0.033, 0.067], 5/5 seeds). A4 and A5 vs A0 are inconclusive. Only A5-LR wins clearly (0.970, TPR 0.90 vs 0.52 at ~5% FPR) — and may exploit simulator regularities.",
+    a: "On my simulation: A1, A2 and A3 alone are worse than CAD (AUROC 0.832 / 0.865 / 0.862 vs 0.911). Combining fusion with the HMM recovers it (A4 vs A2 +0.048 [0.033, 0.067], 5/5 seeds). A4 and A5 vs A0 are inconclusive. Only A5-LR wins clearly (0.970, TPR 0.90 vs 0.52 at ~5% FPR) — and may exploit simulator regularities.",
   },
   {
     q: "What are the limitations of the proposed approach?",
@@ -71,7 +71,7 @@ export const glossary: { term: string; def: string }[] = [
   { term: "CAD", def: "Collaborative Anomaly Detection (Zhang et al., 2024): geometric consistency checks between shared occupancy maps and perception output." },
   { term: "ε_occ, ε_spoof, ε_remove", def: "CAD's conflict regions: occupied-vs-free between vehicles; boxes in free space; occupied space without a box." },
   { term: "σ thresholds", def: "Minimum conflict area for CAD to raise an alarm." },
-  { term: "T-CAD", def: "Our extension (implemented; measured on our simulator): calibration, probabilistic fusion, temporal HMM inference, leave-one-out scoring, decision layer." },
+  { term: "T-CAD", def: "Our extension (implemented; measured on my simulation): calibration, probabilistic fusion, temporal HMM inference, leave-one-out scoring, decision layer." },
   { term: "Hidden state X_t", def: "The true occupancy of a region at time t (Free or Occupied); never observed directly." },
   { term: "Observation Z_t", def: "A sensor reading (occ / free) or the absence of one (∅)." },
   { term: "HMM", def: "Hidden Markov model: latent state with Markov transitions and state-dependent observations." },
@@ -88,5 +88,5 @@ export const glossary: { term: string; def: string }[] = [
   { term: "Frozen threshold", def: "Decision threshold chosen on the validation split (FPR ≤ 5%) and never re-tuned on test." },
   { term: "Scenario bootstrap CI", def: "95% interval from resampling whole test scenarios, so correlated rows inside a scenario don't shrink the CI." },
   { term: "ρ (rho)", def: "Measured correlation between sources' observation errors (≈ 0.68); used to temper fusion." },
-  { term: "Recorded simulator run", def: "A replay rendered from our simulator's recorded trace — a demonstration, not a metric." },
+  { term: "Recorded simulator run", def: "A replay rendered from my simulation's recorded trace — a demonstration, not a metric." },
 ];

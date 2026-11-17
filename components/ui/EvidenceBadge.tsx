@@ -5,7 +5,7 @@ import { BookOpen, FlaskConical, Sparkles, ClipboardList, Clapperboard } from "l
  * Every scene that shows a number, figure, video or simulation carries one.
  *  - published    : reported by Zhang et al. (2024)
  *  - measured     : our T-CAD experiment (synthetic simulator, logged results)
- *  - recorded     : a replay recorded from our simulator — a demonstration, not a metric
+ *  - recorded     : a replay recorded from my simulation — a demonstration, not a metric
  *  - illustrative : in-browser teaching simulation
  *  - proposed     : planned, not yet measured
  */
@@ -14,7 +14,7 @@ export type EvidenceKind = "published" | "measured" | "recorded" | "illustrative
 const meta: Record<EvidenceKind, { label: string; color: string; Icon: typeof BookOpen; hint: string }> = {
   published: { label: "Published — Zhang et al. (2024)", color: "var(--color-collab)", Icon: BookOpen, hint: "Reported by the original authors, USENIX Security 2024 — not our measurement" },
   measured: { label: "Our measured experiment", color: "var(--color-consistent)", Icon: FlaskConical, hint: "Logged results of our T-CAD implementation on our synthetic simulator (45 test scenarios)" },
-  recorded: { label: "Recorded simulator run", color: "#2dd4bf", Icon: Clapperboard, hint: "Replay rendered from our simulator's recorded trace — a demonstration, not a metric" },
+  recorded: { label: "Recorded simulator run", color: "#2dd4bf", Icon: Clapperboard, hint: "Replay rendered from my simulation's recorded trace — a demonstration, not a metric" },
   illustrative: { label: "Illustrative simulation", color: "var(--color-prob)", Icon: Sparkles, hint: "Synthetic, in-browser — explains a concept, proves nothing" },
   proposed: { label: "Proposed / not yet measured", color: "var(--color-ink-3)", Icon: ClipboardList, hint: "Planned, not yet executed" },
 };

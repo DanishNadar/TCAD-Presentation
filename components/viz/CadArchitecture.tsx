@@ -113,7 +113,7 @@ export function CadArchitecture({
         CAD CONSISTENCY CHECKS · PUBLISHED METHOD, OUR RE-IMPLEMENTATION
       </text>
       <text x={600} y={442} fill={colors.prob} fontSize={13} fontFamily="var(--font-mono)" letterSpacing="0.1em" opacity={enabled.has("calibration") ? 1 : 0.35}>
-        T-CAD PROBABILISTIC + TEMPORAL BRANCH · IMPLEMENTED & MEASURED IN OUR SIMULATOR
+        T-CAD PROBABILISTIC + TEMPORAL BRANCH · IMPLEMENTED & MEASURED IN my simulation
       </text>
 
       {edges.map(([from, to]) => {

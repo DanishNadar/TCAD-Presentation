@@ -1,17 +1,28 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 560" role="img" aria-label="Conceptual illustration of an occupancy hidden Markov model's prior prediction observation and posterior steps">
- <rect width="1100" height="560" rx="22" fill="#0a1626"/>
- <text x="44" y="54" fill="#ffffff" font-size="29" font-family="Arial" font-weight="bold">A region's occupancy belief evolves over time</text>
- <g font-family="Arial" text-anchor="middle" fill="#e4e9f2">
-  <text x="133" y="118" font-size="21">Previous belief</text><text x="410" y="118" font-size="21">Predict state</text><text x="688" y="118" font-size="21">New evidence</text><text x="970" y="118" font-size="21">Posterior</text>
-  <rect x="34" y="145" width="198" height="224" rx="14" fill="#162a46" stroke="#68aef8"/>
-  <rect x="311" y="145" width="198" height="224" rx="14" fill="#162a46" stroke="#68aef8"/>
-  <rect x="589" y="145" width="198" height="224" rx="14" fill="#322744" stroke="#b998ef"/>
-  <rect x="868" y="145" width="198" height="224" rx="14" fill="#332c36" stroke="#ebb05c"/>
-  <text x="133" y="193" font-size="16">P(Occupied)</text><text x="410" y="193" font-size="16">Transition model</text><text x="688" y="193" font-size="16">Sensor likelihood</text><text x="970" y="193" font-size="16">Updated P(Occupied)</text>
-  <text x="133" y="295" fill="#65ccff" font-size="52">0.30</text><text x="410" y="295" fill="#65ccff" font-size="52">0.34</text><text x="688" y="295" fill="#c69aff" font-size="52">Zₜ</text><text x="970" y="295" fill="#ffc274" font-size="52">0.67</text>
-  <text x="133" y="342" fill="#b4c0cc" font-size="16">Illustrative prior</text><text x="410" y="342" fill="#b4c0cc" font-size="16">Illustrative prediction</text><text x="688" y="342" fill="#b4c0cc" font-size="16">Illustrative observation</text><text x="970" y="342" fill="#b4c0cc" font-size="16">Illustrative update</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="580" viewBox="0 0 1100 580" role="img" aria-label="Conceptual illustration of one CAD-HMM forward step for one region: previous belief, prediction with the learned transition probabilities, sensor likelihood ratio, and posterior">
+ <defs>
+  <marker id="arrow" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" refX="12" refY="7" orient="auto"><path d="M1 1L13 7L1 13Z" fill="#91a3b6"/></marker>
+ </defs>
+ <rect width="1100" height="580" rx="22" fill="#0a1626"/>
+ <text x="44" y="54" fill="#ffffff" font-size="29" font-family="Arial, Helvetica, sans-serif" font-weight="bold">One forward step of a region's occupancy belief</text>
+ <g font-family="Arial, Helvetica, sans-serif" text-anchor="middle" fill="#e4e9f2">
+  <text x="138" y="112" font-size="21">Previous belief</text><text x="410" y="112" font-size="21">1 · Predict</text><text x="684" y="112" font-size="21">2 · New evidence</text><text x="958" y="112" font-size="21">3 · Posterior</text>
+  <rect x="40" y="135" width="196" height="230" rx="14" fill="#162a46" stroke="#68aef8"/>
+  <rect x="312" y="135" width="196" height="230" rx="14" fill="#162a46" stroke="#68aef8"/>
+  <rect x="586" y="135" width="196" height="230" rx="14" fill="#322744" stroke="#b998ef"/>
+  <rect x="860" y="135" width="196" height="230" rx="14" fill="#332c36" stroke="#ebb05c"/>
+  <text x="138" y="176" font-size="16">P(Occupied) at t−1</text><text x="410" y="176" font-size="16">Transition model</text><text x="684" y="176" font-size="16">Sensor likelihood ratio</text><text x="958" y="176" font-size="16">P(Occupied) at t</text>
+  <text x="138" y="272" fill="#65ccff" font-size="52">0.30</text><text x="410" y="272" fill="#65ccff" font-size="52">0.28</text><text x="684" y="272" fill="#c69aff" font-size="52">× 5.0</text><text x="958" y="272" fill="#ffc274" font-size="52">0.66</text>
+  <text x="138" y="318" fill="#b4c0cc" font-size="14.5">example starting value</text>
+  <text x="410" y="312" fill="#b4c0cc" font-size="14.5">0.30·(1−p10) + 0.70·p01</text><text x="410" y="334" fill="#8fa1b3" font-size="13">p01 = 0.0009, p10 = 0.0631</text>
+  <text x="684" y="312" fill="#b4c0cc" font-size="14.5">P(z | Occ) / P(z | Free)</text><text x="684" y="334" fill="#8fa1b3" font-size="13">example: an "occupied" return</text>
+  <text x="958" y="312" fill="#b4c0cc" font-size="14.5">0.28·5 / (0.28·5 + 0.72)</text><text x="958" y="334" fill="#8fa1b3" font-size="13">Bayes update, normalized</text>
  </g>
- <g stroke="#91a3b6" fill="none" stroke-width="4"><path d="M240 255h59"/><path d="M293 248l9 7-9 7"/><path d="M517 255h59"/><path d="M570 248l9 7-9 7"/><path d="M795 255h59"/><path d="M848 248l9 7-9 7"/></g>
- <path d="M50 458H1050" stroke="#526778" stroke-width="2"/>
- <g font-size="17" font-family="Arial" fill="#c8d5e1"><text x="50" y="415">For each time step: predict using prior state → apply sensor evidence → normalize into an updated belief</text><text x="50" y="501">Unknown = missing/insufficient evidence; Free/Occupied = proposed binary hidden states</text><text x="50" y="535" fill="#edbd74">NUMERIC VALUES ARE SYNTHETIC EXAMPLES — NOT EXPERIMENTAL RESULTS</text></g>
+ <g stroke="#91a3b6" stroke-width="3.5" marker-end="url(#arrow)"><path d="M240 250H307"/><path d="M512 250H581"/><path d="M786 250H855"/></g>
+ <path d="M50 470H1050" stroke="#526778" stroke-width="2"/>
+ <g font-size="17" font-family="Arial, Helvetica, sans-serif" fill="#c8d5e1">
+  <text x="50" y="410">Each 0.1 s frame: predict with the learned transitions → multiply by the sensor evidence → normalize.</text>
+  <text x="50" y="436" fill="#9fb0c0" font-size="15.5">With no new evidence the belief decays toward Free, because P(Free→Occ) is far smaller than P(Occ→Free).</text>
+  <text x="50" y="508">Hidden states: Free / Occupied. Unknown is an observation (no evidence, likelihood ratio 1), not a state.</text>
+  <text x="50" y="544" fill="#edbd74">Transitions from the calibration split; starting belief and likelihood ratio are made-up example values.</text>
+ </g>
 </svg>

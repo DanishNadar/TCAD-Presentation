@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="780" height="410" viewBox="0 0 780 410" font-family="Arial, Helvetica, sans-serif">
+ <defs>
+  <marker id="a" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" refX="11" refY="6" orient="auto"><path d="M0 0L12 6L0 12Z" fill="#222"/></marker>
+ </defs>
+ <rect width="780" height="410" fill="#fff"/>
+ <text x="390" y="30" text-anchor="middle" font-size="16.5" fill="#111">CAD-HMM two-state occupancy model (transitions learned on the calibration split)</text>
+
+ <ellipse cx="230" cy="200" rx="88" ry="50" fill="#cfe3f7" stroke="#333" stroke-width="1.5"/>
+ <text x="230" y="207" text-anchor="middle" font-size="19" font-weight="bold">Free</text>
+ <ellipse cx="550" cy="200" rx="88" ry="50" fill="#c8e6c9" stroke="#333" stroke-width="1.5"/>
+ <text x="550" y="207" text-anchor="middle" font-size="19" font-weight="bold">Occupied</text>
+
+ <g stroke="#222" stroke-width="1.6" fill="none" marker-end="url(#a)">
+  <!-- Free -> Occupied -->
+  <path d="M300 170Q390 118 480 170"/>
+  <!-- Occupied -> Free -->
+  <path d="M480 230Q390 282 300 230"/>
+  <!-- self loops -->
+  <path d="M170 164C120 110 215 92 214 148"/>
+  <path d="M610 164C660 110 565 92 566 148"/>
+ </g>
+ <text x="390" y="126" text-anchor="middle" font-size="15">p01 = 0.0009 / frame</text>
+ <text x="390" y="290" text-anchor="middle" font-size="15">p10 = 0.0631 / frame</text>
+ <text x="150" y="100" text-anchor="middle" font-size="13.5">stay 0.9991</text>
+ <text x="630" y="100" text-anchor="middle" font-size="13.5">stay 0.9369</text>
+
+ <text x="390" y="340" text-anchor="middle" font-size="13">Observations z ∈ {Unknown, Free, Occupied} are emissions (Unknown = no evidence);</text>
+ <text x="390" y="359" text-anchor="middle" font-size="13">emission P(z | X, distance) comes from the calibrated observation model; frame = 0.1 s</text>
+ <text x="765" y="398" text-anchor="end" font-size="10" fill="#777">parameters from data/calibration/observationModel.json (calibration split only) · redrawn for legibility</text>
+</svg>

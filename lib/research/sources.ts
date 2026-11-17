@@ -32,12 +32,6 @@ export const references: Reference[] = [
     role: "Original code and data source for OPV2V / Adv-OPV2V (datasets not bundled with this deck).",
   },
   {
-    key: "tcadRepo",
-    short: "T-CAD repository (ours)",
-    full: "D. Nadar. T-CAD — Temporal Collaborative Anomaly Detection: synthetic multi-vehicle simulator, CAD-inspired baseline, calibrated Bayesian fusion, CAD-HMM and decision layers (CS 528, Illinois Tech, 2026). Results snapshot in research-data/measured/.",
-    role: "Source of every ‘Our measured experiment’ number, figure and recorded replay in this deck.",
-  },
-  {
     key: "opv2v",
     short: "Xu et al., ICRA 2022 (OPV2V)",
     full: "R. Xu, H. Xiang, X. Xia, X. Han, J. Li, J. Ma. “OPV2V: An Open Benchmark Dataset and Fusion Pipeline for Perception with Vehicle-to-Vehicle Communication.” ICRA 2022.",

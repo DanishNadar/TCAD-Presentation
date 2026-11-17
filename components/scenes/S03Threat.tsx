@@ -54,7 +54,7 @@ export function S03Threat() {
             options={[
               { value: "benign", label: "Benign sharing" },
               { value: "fab", label: "Fabricated report" },
-              { value: "sim", label: "Our simulator" },
+              { value: "sim", label: "my simulation" },
             ]}
           />
           <div className="divide-y divide-line rounded-xl border border-line bg-panel/80">

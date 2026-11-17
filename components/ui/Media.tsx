@@ -120,25 +120,29 @@ export function FigurePlate({
 export function FigureThumb({ file, title, kind, width, height }: { file: string; title: string; kind: string; width: number; height: number }) {
   const [open, setOpen] = useState(false);
   const src = assetPath(file.startsWith("/") ? file : `/figures/${file}`);
+  // Concept diagrams are dark vector art: give them a matching backdrop instead of white letterbox bars.
+  const dark = kind === "concept";
   const tone = kind === "measured" ? "text-consistent" : kind === "illustrative" ? "text-prob" : kind === "concept" ? "text-temporal" : "text-ink-2";
   return (
     <>
       <button onClick={() => setOpen(true)} className="group overflow-hidden rounded-lg border border-line bg-panel/90 text-left hover:border-ink-3" style={{ width }} aria-label={`Open figure: ${title}`}>
-        <div className="flex items-center justify-center bg-white" style={{ height }}>
+        <div className={`flex items-center justify-center ${dark ? "bg-[#0a1626]" : "bg-white"}`} style={{ height }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={src} alt={title} className="max-h-full max-w-full object-contain" loading="lazy" />
+          <img src={src} alt={title} className="h-full w-full object-contain" loading="lazy" />
         </div>
         <div className="px-2 py-1">
           <div className={`font-mono text-[10px] uppercase tracking-[0.08em] ${tone}`}>{kind === "measured" ? "measured plot" : kind === "illustrative" ? "illustrative (calibrated params)" : kind === "concept" ? "redrawn conceptual diagram" : "architecture diagram"}</div>
           <div className="truncate text-[12px] text-ink">{title}</div>
         </div>
       </button>
-      <Lightbox open={open} onClose={() => setOpen(false)} src={src} title={title} />
+      <Lightbox open={open} onClose={() => setOpen(false)} src={src} title={title} dark={dark} />
     </>
   );
 }
 
-function Lightbox({ open, onClose, src, title }: { open: boolean; onClose: () => void; src: string; title: string }) {
+function Lightbox({ open, onClose, src, title, dark = false }: { open: boolean; onClose: () => void; src: string; title: string; dark?: boolean }) {
+  // Vector diagrams scale cleanly, so fill the viewport instead of showing them at their intrinsic size.
+  const vector = src.toLowerCase().endsWith(".svg");
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
   useEffect(() => {
@@ -164,9 +168,9 @@ function Lightbox({ open, onClose, src, title }: { open: boolean; onClose: () =>
           onClick={onClose}
           data-capture-keys
         >
-          <div className="relative max-h-full max-w-full rounded-lg bg-white p-3" onClick={(e) => e.stopPropagation()}>
+          <div className={`relative max-h-full max-w-full rounded-lg p-3 ${dark ? "bg-[#0a1626]" : "bg-white"}`} onClick={(e) => e.stopPropagation()}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={src} alt={title} className="max-h-[86vh] max-w-[92vw] object-contain" />
+            <img src={src} alt={title} className={vector ? "block h-[86vh] w-[92vw] object-contain" : "max-h-[86vh] max-w-[92vw] object-contain"} />
             <button onClick={onClose} aria-label="Close" className="absolute -right-3 -top-3 rounded-full bg-void p-1.5 text-ink">
               <X size={16} />
             </button>

@@ -9,7 +9,7 @@ import { glossary, qaItems } from "../lib/research/qaGlossary";
 
 const storyboard: Record<string, { visual: string; math: string; evidence: string }> = {
   opening: { visual: "Full-bleed 2.5D intersection; ray-cast LiDAR fields, sweep lines, V2V particle links; slow camera drift.", math: "—", evidence: "Illustrative" },
-  "why-collab": { visual: "Split view of the same world: EGO-only vs collaborative; ground-truth toggle; ‘Our simulator’ shows recorded occlusion replays (world + LiDAR).", math: "—", evidence: "Illustrative + Recorded run" },
+  "why-collab": { visual: "Split view of the same world: EGO-only vs collaborative; ground-truth toggle; ‘my simulation’ shows recorded occlusion replays (world + LiDAR).", math: "—", evidence: "Illustrative + Recorded run" },
   threat: { visual: "Same world with a synthetic fabricated object inside EGO's observed free space; evidence table; recorded merged-occupancy replay of scenario C.", math: "—", evidence: "Illustrative + Recorded run" },
   paper: { visual: "Animated 3D paper sheet + three contribution cards; links to USENIX and arXiv.", math: "—", evidence: "Published" },
   cad: { visual: "Grid explainer (4 steps, scenario switch, σ slider) | Our implementation: CAD-conflict replay, fig05, paper→implementation fidelity table.", math: "Eq. 5–7 (ε_occ, merged map, ε_spoof / ε_remove)", evidence: "Published method · illustrative grid · measured" },

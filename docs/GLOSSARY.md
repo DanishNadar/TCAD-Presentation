@@ -11,7 +11,7 @@
 | CAD | Collaborative Anomaly Detection (Zhang et al., 2024): geometric consistency checks between shared occupancy maps and perception output. |
 | ε_occ, ε_spoof, ε_remove | CAD's conflict regions: occupied-vs-free between vehicles; boxes in free space; occupied space without a box. |
 | σ thresholds | Minimum conflict area for CAD to raise an alarm. |
-| T-CAD | Our extension (implemented; measured on our simulator): calibration, probabilistic fusion, temporal HMM inference, leave-one-out scoring, decision layer. |
+| T-CAD | Our extension (implemented; measured on my simulation): calibration, probabilistic fusion, temporal HMM inference, leave-one-out scoring, decision layer. |
 | Hidden state X_t | The true occupancy of a region at time t (Free or Occupied); never observed directly. |
 | Observation Z_t | A sensor reading (occ / free) or the absence of one (∅). |
 | HMM | Hidden Markov model: latent state with Markov transitions and state-dependent observations. |
@@ -28,4 +28,4 @@
 | Frozen threshold | Decision threshold chosen on the validation split (FPR ≤ 5%) and never re-tuned on test. |
 | Scenario bootstrap CI | 95% interval from resampling whole test scenarios, so correlated rows inside a scenario don't shrink the CI. |
 | ρ (rho) | Measured correlation between sources' observation errors (≈ 0.68); used to temper fusion. |
-| Recorded simulator run | A replay rendered from our simulator's recorded trace — a demonstration, not a metric. |
+| Recorded simulator run | A replay rendered from my simulation's recorded trace — a demonstration, not a metric. |
